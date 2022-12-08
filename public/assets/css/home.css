@@ -1,0 +1,125 @@
+*{
+    font-family:poppins;
+}
+
+/* navbar */
+.navbar{
+    background-color:#fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+}
+.navbar .navbar-brand{
+    color:#6A6CFF;
+    font-weight:600;
+}
+
+.navbar ul li a{
+    color:#75808E;
+    transition:all ease-in-out 0.4s;
+}
+
+.navbar ul li a:hover{
+    transition:all ease-in-out 0.4s;
+    color:#6A6CFF;
+    text-decoration: underline #6A6CFF 1px;
+}
+
+.navbar .btn-daftar{
+    background-color:#6A6CFF;
+    border:none;
+    color:#fff;
+    border-radius:4px;
+    padding:8px 20px;
+}
+
+
+
+/* hero */
+#hero{
+    margin-top:150px;
+}
+#hero h1{
+    color:#6A6CFF;
+    font-weight:600;
+}
+#hero p{
+    font-size:16px;
+    color:#ACACAC;
+}
+#hero .btn-hub{
+    border:none;
+    margin-top:14px;
+    background-color:#fff;
+    padding:8px 24px;
+    font-weight:600;
+    color:#6A6CFF;
+    border-radius:4px;
+    box-shadow: 6px 6px 10px rgba(0,0,0,0.15);
+}
+#hero img{
+    border-radius:120px 4px 4px 10px;
+}
+
+
+/* about */
+#about{
+    padding-top:100px;
+}
+#about .title{
+    font-size:40px;
+    margin-bottom:4px;
+    font-weight:500;
+    color:#6A6CFF;
+}
+#about .subtitle{
+    font-size:16px;
+    color:#75808E;
+}
+#about .card{
+    border:none;
+    border-radius:74px 4px 4px 10px;
+    padding:30px;
+    margin:20px 0px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
+}
+#about .card .gambar{
+    border-radius:60px 4px 4px 10px;
+}
+
+
+/* kontak */
+#kontak{
+    margin-top:100px;
+    background-color:#6A6CFF;
+    padding:60px 0px;
+}
+#kontak .lokasi{
+    border:10px solid #fff;
+    
+}
+#kontak .card{
+    background-color:transparent;
+    border:none;
+    color:#fff;
+}
+
+@media (max-width: 575.98px){
+    #hero{
+        margin-top:40px;
+        padding:0px 16px;
+    }
+    #hero img{
+        border-radius:20px;
+        margin-bottom:30px;
+        margin-top:60px;
+    }
+    #about .card{
+        border:none;
+        border-radius:74px 4px 4px 10px;
+        padding:30px;
+        margin:20px 10px;
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
+    }
+    #kontak{
+        padding:20px 10px;
+    }
+}
