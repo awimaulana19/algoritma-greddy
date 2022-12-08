@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AntrianController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PetugasController;
@@ -15,9 +16,8 @@ use App\Http\Controllers\PetugasController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [AntrianController::class,'index']);
+Route::post('/', [AntrianController::class,'store']);
 
 Route::get('/login',[AuthController::class,'login']);
 Route::post('/login',[AuthController::class,'login_action']);
