@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Antrian;
 use App\Models\Dokter;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
@@ -42,11 +43,24 @@ class DokterController extends Controller
         $user = Auth::user();
         return view('petugas.jadwalDokter.index',compact('user'));
     }
+    public function antrianDoter()
+    {
+        $user = Auth::user();
+        return view('petugas.antrian.index',compact('user'));
+    }
+
 
     public function edit($id)
     {
         $dokter = Dokter::where('id', $id)->first();
         return view('petugas.jadwalDokter.jadwal-edit',compact('dokter'));
+    }
+
+    public function delete_antrian($id)
+    {
+        $antrian = Antrian::where('id',$id)->first();
+        $antrian->delete();
+        return redirect('antrian-dokter');
     }
 
 }
