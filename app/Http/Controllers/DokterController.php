@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class DokterController extends Controller
 {
+    public function adminJadwalDokter()
+    {
+        $dokter = Dokter::get();
+        $user = Auth::user();
+
+        return view('admin.jadwalpetugas',compact('dokter'),compact('user'));
+    }
     public function dashboard()
     {
         $dokter = Dokter::get();

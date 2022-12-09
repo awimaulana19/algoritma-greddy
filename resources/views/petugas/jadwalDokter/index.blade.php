@@ -2,21 +2,23 @@
 
 @section('title', 'Jadwal Dokter')
 @section('content')
-    <div class="card">
-        <h5 class="card-header">Jadwal</h5>
+    <div class="card p-4">
+        <div class="d-flex">
+            <h4>Jadwal</h4>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Tambah Jadwal
+            </button>
+        </div>
+
+        @include('petugas.jadwalDokter.jadwal-create')
 
         <div class="table-responsive text-nowrap">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Membuat Jadwal
-            </button>
-
-            @include('petugas.jadwalDokter.jadwal-create')
 
             <table class="table table-hover mt-4">
                 <thead>
                     <tr>
-                        <th>Nama Dokter</th>
+                        <th>Tanggal</th>
                         <th>hari</th>
                         <th>jam</th>
                         <th>Actions</th>
@@ -25,18 +27,13 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($dokter as $item)
                     <tr>
-                        <td>{{$item->user->nama}}</td>
+                        <td>{{$item->tanggal}}</td>
                         <td>{{\Carbon\Carbon::parse($item->tanggal)->isoFormat('dddd')}}</td>
                         <td>{{$item->jam}} WIB</td>
                         <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                  <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="{{url('/edit-jadwal-dokter/'.$item->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                  <a class="dropdown-item" href="#"><i class="bx bx-trash me-1"></i> Delete</a>
-                                </div>
+                            <div class="d-flex">
+                                  <a class="btn btn-primary me-3" href="{{url('/edit-jadwal-dokter/'.$item->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                  <a class="btn btn-danger" href="#"><i class="bx bx-trash me-1"></i> Delete</a>
                               </div>
                         </td>
                     </tr>

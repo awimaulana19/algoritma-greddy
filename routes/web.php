@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('petugas-edit/{id}', [AdminController::class, 'edit']);
     Route::post('petugas-update/{id}', [AdminController::class, 'update']);
     Route::get('petugas-delete/{id}', [AdminController::class, 'delete']);
+
+    Route::get('admin-jadwal-dokter', [DokterController::class, 'adminJadwalDokter']);
 });
 
 Route::group(['middleware' => ['auth', 'OnlyPetugas']], function () {

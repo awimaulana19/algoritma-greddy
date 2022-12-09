@@ -47,7 +47,7 @@
                             <span class="menu-header-text">Petugas</span>
                         </li>
 
-                        <li @if (request()->route()->uri == 'petugas') class="menu-item active" @else class="menu-item" @endif>
+                        <li @if (request()->route()->uri == 'petugas') class="menu-item active mb-3" @else class="menu-item" @endif>
                             <a href="{{ url('petugas') }}" class="menu-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="menu-icon bi bi-briefcase-fill" viewBox="0 0 16 16">
                                     <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1    a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z" />
@@ -56,6 +56,13 @@
                                 <div data-i18n="Analytics">Dokter</div>
                             </a>
                         </li>
+                        <li @if (request()->route()->uri == 'admin-jadwal-dokter') class="menu-item active mt-3" @else class="menu-item" @endif>
+                            <a href="{{ url('admin-jadwal-dokter') }}" class="menu-link">
+                                <i class="bi bi-calendar-check-fill ms-1 me-3"></i>
+                                <div data-i18n="Analytics">Jadwal Dokter</div>
+                            </a>
+                        </li>
+                    
                     @elseif(auth()->user()->roles == 'petugas')
                         <li class="menu-header small text-uppercase">
                             <span class="menu-header-text">Dokter</span>
