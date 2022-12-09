@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Menu @yield('title')</title>
+    <title>Menu Login</title>
 
     <meta name="description" content="" />
 
@@ -26,6 +26,9 @@
                         <div class="app-brand justify-content-center">
                             <h3>Halaman Login</h3>
                         </div>
+                        @if (session('pesan-danger'))
+                            <p class="alert alert-danger">{{ session('pesan-danger') }}</p>
+                        @endif
                         <!-- /Logo -->
                         <form action="" method="POST">
                             @csrf

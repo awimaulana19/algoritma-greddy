@@ -15,26 +15,23 @@ class AuthController extends Controller
 
     public function login_action(Request $request)
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
+        
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             if (auth()->user()->roles == 'admin') {
-                // return redirect('/');
-                return view('dashboard');
+                return redirect('dashboard-admin');
+            }else if (auth()->user()->roles == 'petugas') {
+                return redirect('dashboard-petugas');
             }
-
-            // return back()->withErrors([
-            //     'password' => 'Username atau Password anda salah',
-            // ]);
         }
+        return back()->with('pesan-danger', 'Username atau Password anda salah');
     }
 
-    public function logout()
+
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 }

@@ -1,6 +1,7 @@
 @extends('template.index')
 
-@section('title', 'dashboard')
+@section('title', 'jadwal-edit')
 @section('content')
+
 
 @endsection

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokter;
 use App\Models\Petugas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class PetugasController extends Controller
+class AdminController extends Controller
 {
     public function index()
     {
@@ -25,11 +26,23 @@ class PetugasController extends Controller
         $user = new User();
 
         $user->nama = $request->nama;
+        $user->spesialis = $request->spesialis;
+        $user->nomor_hp = $request->nomor_hp;
         $user->username = $request->username;
+        $user->gambar = $request->gambar;
         $user->password = Hash::make($request->password);
         $user->roles = 'petugas';
 
-        $user->save();
+        $input = $user;
+
+        if ($gambar = $request->file('gambar')) {
+            $destinationPath = 'storage/images/';
+            $profileImage = $user->nama."-".time() . "." . $gambar->getClientOriginalExtension();
+            $gambar->move($destinationPath, $profileImage);
+            $input['gambar'] = "$profileImage";
+        }
+
+        $input->save();
 
         return redirect('petugas');
     }
@@ -45,11 +58,23 @@ class PetugasController extends Controller
         $user = User::where('id',$id)->first();
 
         $user->nama = $request->nama;
+        $user->spesialis = $request->spesialis;
+        $user->nomor_hp = $request->nomor_hp;
         $user->username = $request->username;
+        $user->gambar = $request->gambar;
         $user->password = Hash::make($request->password);
         $user->roles = 'petugas';
 
-        $user->update();
+        $input = $user;
+
+        if ($gambar = $request->file('gambar')) {
+            $destinationPath = 'storage/images/';
+            $profileImage = $user->nama."-".time() . "." . $gambar->getClientOriginalExtension();
+            $gambar->move($destinationPath, $profileImage);
+            $input['gambar'] = "$profileImage";
+        }
+
+        $input->update();
 
         return redirect('petugas');
     }
@@ -59,5 +84,12 @@ class PetugasController extends Controller
         $user = User::where('id', $id)->first();
         $user->delete();
         return redirect('petugas');
+    }
+
+    public function dashboard()
+    {
+        $user = User::get();
+        $dokter = Dokter::get();
+        return view('admin.dashboard',compact('user','dokter'));
     }
 }

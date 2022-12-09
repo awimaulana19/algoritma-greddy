@@ -4,7 +4,7 @@
 @section('title', 'petugas')
 @section('content')
 <div class="card">
-    <h5 class="card-header">Petugas</h5>
+    <h5 class="card-header">Dokter</h5>
 
     <div class="table-responsive text-nowrap">
         <a href="{{url('petugas-create')}}" type="button" class="btn btn-primary ms-3">Membuat Akun</a>

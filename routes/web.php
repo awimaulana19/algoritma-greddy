@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AntrianController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\DokterController;
+use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,30 @@ use App\Http\Controllers\PetugasController;
 |
 */
 
-Route::get('/', [AntrianController::class,'index']);
-Route::post('/', [AntrianController::class,'store']);
+Route::get('/', [AntrianController::class, 'index']);
+Route::post('/', [AntrianController::class, 'store']);
 
-Route::get('/login',[AuthController::class,'login']);
-Route::post('/login',[AuthController::class,'login_action']);
+Route::get('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login_action']);
+Route::get('logout', [AuthController::class, 'logout']);
 
 
-Route::get('petugas',[PetugasController::class,'index']);
-Route::get('petugas-create',[PetugasController::class,'create']);
-Route::post('petugas-create',[PetugasController::class,'store']);
-Route::get('petugas-edit/{id}',[PetugasController::class,'edit']);
-Route::post('petugas-update/{id}',[PetugasController::class,'update']);
-Route::get('petugas-delete/{id}',[PetugasController::class,'delete']);
+Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
+
+    Route::get('dashboard-admin',[AdminController::class,'dashboard']);
+
+    Route::get('petugas', [AdminController::class, 'index']);
+    Route::get('petugas-create', [AdminController::class, 'create']);
+    Route::post('petugas-create', [AdminController::class, 'store']);
+    Route::get('petugas-edit/{id}', [AdminController::class, 'edit']);
+    Route::post('petugas-update/{id}', [AdminController::class, 'update']);
+    Route::get('petugas-delete/{id}', [AdminController::class, 'delete']);
+});
+
+Route::group(['middleware' => ['auth', 'OnlyPetugas']], function () {
+    Route::get('dashboard-petugas',[DokterController::class,'dashboard']);
+
+    Route::get('jadwal-dokter',[DokterController::class,'jadwalDoter']);
+    Route::post('create-jadwal-dokter',[DokterController::class,'store']);
+    Route::get('edit-jadwal-dokter/{id}',[DokterController::class,'edit']);
+});

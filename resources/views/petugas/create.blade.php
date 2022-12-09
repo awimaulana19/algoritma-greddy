@@ -6,11 +6,19 @@
         <div class="card mb-4">
             <h5 class="card-header">Daftar</h5>
             <div class="card-body">
-                <form action="{{url('/petugas-create')}}" method="POST">
+                <form enctype="multipart/form-data" action="{{ url('/petugas-create') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input class="form-control" type="text" name="nama" placeholder="Masukan Nama">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Spesialis</label>
+                        <input class="form-control" type="text" name="spesialis" placeholder="Masukan Spesialis">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Nomor HP</label>
+                        <input class="form-control" type="text" name="nomor_hp" placeholder="Masukan Nomor HP">
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
@@ -19,6 +27,10 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input class="form-control" type="password" name="password" placeholder="Masukan Password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama" class="form-label">Gambar</label>
+                        <input class="form-control" type="file" id="gambar" name="gambar">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary">
