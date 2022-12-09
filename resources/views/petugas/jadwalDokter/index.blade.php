@@ -1,5 +1,5 @@
 @extends('template.index')
-
+{{-- untuk muiz --}}
 @section('title', 'Jadwal Dokter')
 @section('content')
     <div class="card p-4">
