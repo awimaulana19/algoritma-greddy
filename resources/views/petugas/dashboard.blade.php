@@ -63,7 +63,7 @@
                                 <h1>=</h1>
                             </div>
                             <div class="col-2 align-self-center">
-                                <h1>{{ $dokter->count() }}</h1>
+                                <h1>{{ $user->dokter->count() }}</h1>
                             </div>
                         </div>
                     </div>
