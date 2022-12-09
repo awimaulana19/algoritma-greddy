@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Antrian;
 use App\Models\Dokter;
 use App\Models\Petugas;
 use App\Models\User;
@@ -91,6 +92,7 @@ class AdminController extends Controller
     {
         $user = User::get();
         $dokter = Dokter::get();
-        return view('admin.dashboard',compact('user','dokter'));
+        $antrian = Antrian::get();
+        return view('admin.dashboard',compact('user','dokter','antrian'));
     }
 }

@@ -39,8 +39,8 @@ class DokterController extends Controller
 
     public function jadwalDoter()
     {
-        $dokter = Dokter::get();
-        return view('petugas.jadwalDokter.index',compact('dokter'));
+        $user = Auth::user();
+        return view('petugas.jadwalDokter.index',compact('user'));
     }
 
     public function edit($id)

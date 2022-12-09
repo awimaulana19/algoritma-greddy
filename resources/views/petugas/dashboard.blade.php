@@ -80,10 +80,10 @@
                                 <img src="{{ asset('assets/image/pembukuan.jpg') }}" alt="" width="30%">
                             </div>
                             <div class="col-1 align-self-center">
-                                <h1>{{ $user->antrian->count() }}</h1>
+                                <h1>=</h1>
                             </div>
                             <div class="col-2 align-self-center">
-                                {{-- <h1>{{ $jumlahsurat = SuratFakta::all()->count() + SuratKontrak::all()->count() + SuratSpmk::all()->count() + SuratSppbj::all()->count() }}</h1> --}}
+                                <h1>{{ $user->antrian->count() }}</h1>
                             </div>
                         </div>
                     </div>

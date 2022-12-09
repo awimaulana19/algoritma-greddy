@@ -112,7 +112,7 @@
                             <h1>=</h1>
                         </div>
                         <div class="col-2 align-self-center">
-                            {{-- <h1>{{ $jumlahsurat = SuratFakta::all()->count() + SuratKontrak::all()->count() + SuratSpmk::all()->count() + SuratSppbj::all()->count() }}</h1> --}}
+                            <h1>{{ $antrian->count() }}</h1>
                         </div>
                     </div>
                 </div>

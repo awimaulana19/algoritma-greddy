@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($dokter as $item)
+                    @foreach ($user->dokter as $item)
                     <tr>
                         <td>{{$item->tanggal}}</td>
                         <td>{{\Carbon\Carbon::parse($item->tanggal)->isoFormat('dddd')}}</td>
