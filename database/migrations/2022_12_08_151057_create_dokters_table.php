@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('dokter', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('dokter_id');
-            $table->foreign('dokter_id')->references('id')->on('users');
+            $table->foreignId('user_id');
             $table->date('tanggal');
             $table->string('jam');
             $table->timestamps();

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email');
             $table->string('wa');
-            $table->string('dokter');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

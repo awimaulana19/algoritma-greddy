@@ -91,10 +91,10 @@
                                 <div class="row mb-3">
                                     <label for="dokter" class="col-3 col-form-label">Pilihan Dokter</label>
                                     <div class="col-9">
-                                        <select id="dokter" name="dokter" class="form-select">
-                                            <option value="1">Awi</option>
-                                            <option value="2">Rizki</option>
-                                            <option value="3">Muiz</option>
+                                        <select class="form-select" id="dokter" name="user_id">
+                                            @foreach ($user as $item)
+                                                <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -142,18 +142,20 @@
             </div>
 
             <div class="row mt-2">
+                @foreach ($user as $item)
+                
                 <div class="col-md-4">
                     <div class="card">
                         <img src="{{ asset('assets/image/dokter1.png') }}" alt="" width="100%"
                             class="gambar">
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
-                            data-bs-target="#dokter1">
+                            data-bs-target="#dokter{{ $item->id }}">
                             Detail Dokter
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="dokter1" tabindex="-1" aria-labelledby="dokter1Label"
+                        <div class="modal fade" id="dokter{{ $item->id }}" tabindex="-1" aria-labelledby="dokter1Label"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
@@ -171,9 +173,9 @@
                                                         <p>Nomor Telp</p>
                                                     </div>
                                                     <div class="col-8">
-                                                        <p> : Dr.Awi</p>
-                                                        <p> : Penyakit Dalam</p>
-                                                        <p> : +6282236831592</p>
+                                                        <p> : {{ $item->nama }}</p>
+                                                        <p> : {{ $item->spesialis }}</p>
+                                                        <p> : {{ $item->nomor_hp }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,23 +183,17 @@
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">Hari</th>
+                                                            <th scope="col">Tanggal</th>
                                                             <th scope="col">Jam</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Senin</td>
-                                                            <td>08:00 - 12:00 WIB</td>
+                                                        @foreach ($item->dokter as $dok)
+                                                        <tr>  
+                                                            <td>{{ $dok->tanggal }}</td>
+                                                            <td>{{ $dok->jam }}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Rabu</td>
-                                                            <td>08:00 - 12:00 WIB</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Kamis</td>
-                                                            <td>08:00 - 12:00 WIB</td>
-                                                        </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -239,8 +235,8 @@
                                                                 aria-describedby="basic-default-phone" />
                                                         </div>
                                                     </div>
-                                                    <input id="dokter" type="hidden" name="dokter"
-                                                        value="1">
+                                                    <input id="dokter" type="hidden" name="user_id"
+                                                        value="{{ $item->id }}">
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Daftar</button>
                                             </form>
@@ -254,7 +250,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>    
+                @endforeach
             </div>
         </div>
     </section>

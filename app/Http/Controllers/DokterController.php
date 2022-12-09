@@ -12,7 +12,9 @@ class DokterController extends Controller
     public function dashboard()
     {
         $dokter = Dokter::get();
-        return view('petugas.dashboard',compact('dokter'));
+        $user = Auth::user();
+
+        return view('petugas.dashboard',compact('dokter'),compact('user'));
     }
 
     public function store(Request $request)
@@ -21,7 +23,7 @@ class DokterController extends Controller
 
         $dokter->tanggal = $request->tanggal;
         $dokter->jam = $request->jam;
-        $dokter->dokter_id = Auth::user()->id;
+        $dokter->user_id = Auth::user()->id;
         // dd($input);
         $dokter->save();
 
