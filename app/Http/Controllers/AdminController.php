@@ -72,6 +72,7 @@ class AdminController extends Controller
             $profileImage = $user->nama."-".time() . "." . $gambar->getClientOriginalExtension();
             $gambar->move($destinationPath, $profileImage);
             $input['gambar'] = "$profileImage";
+            $input->update();
         }
 
         $input->update();
