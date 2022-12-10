@@ -33,7 +33,7 @@
                         <td>
                             <div class="d-flex">
                                   <a class="btn btn-primary me-3" href="{{url('/edit-jadwal-dokter/'.$item->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                  <a class="btn btn-danger" href="#"><i class="bx bx-trash me-1"></i> Delete</a>
+                                  <a class="btn btn-danger" href="{{url('/delete-jadwal-dokter/'.$item->id)}}"><i class="bx bx-trash me-1"></i> Delete</a>
                               </div>
                         </td>
                     </tr>

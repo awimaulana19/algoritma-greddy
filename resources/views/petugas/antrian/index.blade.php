@@ -1,5 +1,7 @@
 @extends('template.index')
 
+@section('title', 'Antrian Pasien')
+
 @section('content')
 {{-- antrain sebelum verifikasi --}}
 <div class="card">

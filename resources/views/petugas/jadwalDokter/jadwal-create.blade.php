@@ -7,7 +7,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <form action="{{ url('create-jadwal-dokter') }}" method="POST">
+                  <form enctype="multipart/form-data" action="{{ url('create-jadwal-dokter') }}" method="POST">
                       @csrf
                       <div class="mb-3">
                           <label for="nama" class="form-label">Tanggal</label>

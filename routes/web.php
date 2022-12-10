@@ -41,9 +41,15 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
 
 Route::group(['middleware' => ['auth', 'OnlyPetugas']], function () {
     Route::get('dashboard-petugas',[DokterController::class,'dashboard']);
+
+    // jadwal
     Route::get('jadwal-dokter',[DokterController::class,'jadwalDoter']);
-    Route::get('antrian-dokter',[DokterController::class,'antrianDoter']);
     Route::post('create-jadwal-dokter',[DokterController::class,'store']);
     Route::get('edit-jadwal-dokter/{id}',[DokterController::class,'edit']);
+    Route::post('edit-jadwal-dokter/{id}',[DokterController::class,'update']);
+    Route::get('delete-jadwal-dokter/{id}',[DokterController::class,'delete']);
+
+    // atrian
+    Route::get('antrian-dokter',[DokterController::class,'antrianDoter']);
     Route::get('delete-antrian/{id}',[DokterController::class,'delete_antrian']);
 });
