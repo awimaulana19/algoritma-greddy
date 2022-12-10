@@ -13,8 +13,9 @@ class DokterController extends Controller
     public function adminJadwalDokter()
     {
         $dokter = Dokter::get();
+        $user = User::where('roles','=','petugas')->get();
 
-        return view('admin.jadwalpetugas', compact('dokter'));
+        return view('admin.jadwalpetugas', compact('dokter','user'));
     }
 
     public function adminAntrianlPasien()
@@ -43,6 +44,19 @@ class DokterController extends Controller
         $dokter->save();
 
         return redirect('jadwal-dokter');
+    }
+
+    public function storeAdmin(Request $request)
+    {
+        $dokter = new Dokter();
+
+        $dokter->tanggal = $request->tanggal;
+        $dokter->jam = $request->jam;
+        $dokter->user_id = $request->user_id;
+
+        $dokter->save();
+
+        return redirect('admin-jadwal-dokter');
     }
 
     public function jadwalDoter()

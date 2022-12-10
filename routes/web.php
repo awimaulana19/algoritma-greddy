@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('petugas-delete/{id}', [AdminController::class, 'delete']);
 
     Route::get('admin-jadwal-dokter', [DokterController::class, 'adminJadwalDokter']);
+    Route::post('create-jadwal-dokterAdmin',[DokterController::class,'storeAdmin']);
     Route::get('edit-jadwal-dokterAdmin/{id}',[DokterController::class,'editAdmin']);
     Route::post('edit-jadwal-dokterAdmin/{id}',[DokterController::class,'updateAdmin']);
     Route::get('delete-jadwal-dokterAdmin/{id}',[DokterController::class,'deleteAdmin']);
