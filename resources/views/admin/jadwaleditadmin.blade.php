@@ -1,13 +1,13 @@
 @extends('template.index')
 
-@section('title', 'jadwal-edit')
+@section('title', 'Jadwal Edit')
 @section('content')
 
 <div class="col-12 mx-auto">
     <div class="card mb-4">
         <h5 class="card-header">Daftar</h5>
         <div class="card-body">
-            <form enctype="multipart/form-data" action="{{ url('edit-jadwal-dokter/'.$dokter->id) }}" method="POST">
+            <form enctype="multipart/form-data" action="{{ url('edit-jadwal-dokterAdmin/'.$dokter->id) }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="nama" class="form-label">Tanggal</label>

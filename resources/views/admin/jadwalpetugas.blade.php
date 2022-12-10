@@ -12,8 +12,9 @@
                     <thead>
                         <tr>
                             <th>Nama Dokter</th>
-                            <th>hari</th>
-                            <th>jam</th>
+                            <th>Tanggal</th>
+                            <th>Hari</th>
+                            <th>Jam</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -21,12 +22,13 @@
                         @foreach ($dokter as $item)
                         <tr>
                             <td>{{$item->user->nama}}</td>
+                            <td>{{$item->tanggal}}</td>
                             <td>{{\Carbon\Carbon::parse($item->tanggal)->isoFormat('dddd')}}</td>
                             <td>{{$item->jam}} WIB</td>
                             <td>
                                 <div class="d-flex">
-                                      <a class="btn btn-primary me-3" href="{{url('/edit-jadwal-dokter/'.$item->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                      <a class="btn btn-danger" href="#"><i class="bx bx-trash me-1"></i> Delete</a>
+                                      <a class="btn btn-primary me-3" href="{{url('/edit-jadwal-dokterAdmin/'.$item->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                      <a class="btn btn-danger" href="{{url('/delete-jadwal-dokterAdmin/'.$item->id)}}"><i class="bx bx-trash me-1"></i> Delete</a>
                                   </div>
                             </td>
                         </tr>

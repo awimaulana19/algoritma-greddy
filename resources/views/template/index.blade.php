@@ -62,6 +62,13 @@
                                 <div data-i18n="Analytics">Jadwal Dokter</div>
                             </a>
                         </li>
+
+                        <li @if (request()->route()->uri == 'admin-antrian-pasien') class="menu-item active mt-3" @else class="menu-item" @endif>
+                            <a href="{{ url('admin-antrian-pasien') }}" class="menu-link">
+                                <i class="bi bi-people ms-1 me-3"></i>
+                                <div data-i18n="Analytics">Antrian Pasien</div>
+                            </a>
+                        </li>
                     
                     @elseif(auth()->user()->roles == 'petugas')
                         <li class="menu-header small text-uppercase">

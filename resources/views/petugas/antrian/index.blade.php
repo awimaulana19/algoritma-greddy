@@ -5,7 +5,7 @@
 @section('content')
 {{-- antrain sebelum verifikasi --}}
 <div class="card">
-    <h5 class="card-header">Atrian</h5>
+    <h5 class="card-header">Antrian</h5>
 
     <div class="table-responsive text-nowrap">
         <!-- Button trigger modal -->
@@ -27,7 +27,7 @@
                     <td>{{$item->email}}</td>
                     <td>{{$item->wa}}</td>
                     <td>
-                        <a href="{{url('/delete-antrian/'.$item->id)}}" class="btn btn-danger">Hapus</a>
+                        <a href="{{url('/delete-antrian/'.$item->id)}}" class="btn btn-success">Accept</a>
                     </td>
                 </tr>
                 @endforeach

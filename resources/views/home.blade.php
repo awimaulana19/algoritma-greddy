@@ -84,7 +84,7 @@
                                     <label class="col-3 col-form-label" for="wa">Nomor WA</label>
                                     <div class="col-9">
                                         <input type="text" id="wa" name="wa"
-                                            class="form-control phone-mask" placeholder="628" aria-label="628"
+                                            class="form-control phone-mask" placeholder="Nomor" aria-label="Nomor"
                                             aria-describedby="basic-default-phone" />
                                     </div>
                                 </div>
@@ -146,8 +146,7 @@
                 
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="{{ asset('assets/image/dokter1.png') }}" alt="" width="100%"
-                            class="gambar">
+                        <img src="{{$item->gambar != null ? asset('storage/images/'.$item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto"  width="100%" height="360px" class="gambar" />
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
                             data-bs-target="#dokter{{ $item->id }}">
@@ -162,8 +161,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <img src="{{ asset('assets/image/dokter1.png') }}" alt=""
-                                                    width="100%" class="">
+                                                <img src="{{$item->gambar != null ? asset('storage/images/'.$item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto" width="100%" />
                                             </div>
                                             <div class="col-md-7 align-self-center">
                                                 <div class="row">
@@ -183,13 +181,15 @@
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
+                                                            <th scope="col">Hari</th>
                                                             <th scope="col">Tanggal</th>
                                                             <th scope="col">Jam</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($item->dokter as $dok)
-                                                        <tr>  
+                                                        <tr>
+                                                            <td>{{\Carbon\Carbon::parse($dok->tanggal)->isoFormat('dddd')}}</td>  
                                                             <td>{{ $dok->tanggal }}</td>
                                                             <td>{{ $dok->jam }}</td>
                                                         </tr>
@@ -230,8 +230,8 @@
                                                             WA</label>
                                                         <div class="col-9">
                                                             <input type="text" id="wa" name="wa"
-                                                                class="form-control phone-mask" placeholder="628"
-                                                                aria-label="628"
+                                                                class="form-control phone-mask" placeholder="Nomor"
+                                                                aria-label="Nomor"
                                                                 aria-describedby="basic-default-phone" />
                                                         </div>
                                                     </div>

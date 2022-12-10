@@ -19,8 +19,8 @@
                 <thead>
                     <tr>
                         <th>Tanggal</th>
-                        <th>hari</th>
-                        <th>jam</th>
+                        <th>Hari</th>
+                        <th>Jam</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
