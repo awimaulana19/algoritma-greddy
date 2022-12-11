@@ -1,4 +1,5 @@
 @extends('template.index')
+<<<<<<< Updated upstream
 
 @section('title', 'Antrian Pasien')
 
@@ -14,6 +15,7 @@
         <table class="table table-hover mt-4">
             <thead>
                 <tr>
+                    <th>No Antrian</th>
                     <th>Nama Pasien</th>
                     <th>Email</th>
                     <th>Whatsapp</th>
@@ -23,6 +25,7 @@
             <tbody class="table-border-bottom-0">
                 @foreach ($user->antrian as $item)
                 <tr>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{$item->nama}}</td>
                     <td>{{$item->email}}</td>
                     <td>{{$item->wa}}</td>

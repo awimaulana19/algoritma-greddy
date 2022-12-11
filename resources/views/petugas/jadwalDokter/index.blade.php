@@ -13,7 +13,7 @@
 
         @include('petugas.jadwalDokter.jadwal-create')
 
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive text-nowrap mt-4">
 
             <table class="table table-hover mt-4">
                 <thead>
