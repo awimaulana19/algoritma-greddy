@@ -3,6 +3,7 @@
 @section('title', 'Jadwal Petugas | Admin')
 
 @section('content')
+@include('sweetalert::alert')
     <div class="row">
         <div class="col-lg-12 col-md-12 mb-4">
             <div class="card p-4">

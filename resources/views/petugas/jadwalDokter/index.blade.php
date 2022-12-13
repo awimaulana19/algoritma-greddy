@@ -12,6 +12,7 @@
         </div>
 
         @include('petugas.jadwalDokter.jadwal-create')
+        @include('sweetalert::alert')
 
         <div class="table-responsive text-nowrap mt-4">
 

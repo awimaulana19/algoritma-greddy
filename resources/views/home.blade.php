@@ -21,7 +21,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     {{-- navbar --}}
     <nav class="navbar navbar-expand-lg py-3 fixed-top">
         <div class="container">

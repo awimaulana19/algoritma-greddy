@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::post('edit-jadwal-dokterAdmin/{id}',[DokterController::class,'updateAdmin']);
     Route::get('delete-jadwal-dokterAdmin/{id}',[DokterController::class,'deleteAdmin']);
     Route::get('admin-antrian-pasien', [DokterController::class, 'adminAntrianlPasien']);
+    Route::get('/whatsapp-admin/{id}', [WhatsappController::class, 'index']);
     Route::get('delete-antrian-admin/{id}',[DokterController::class,'delete_antrianAdmin']);
 });
 
@@ -56,9 +57,8 @@ Route::group(['middleware' => ['auth', 'OnlyPetugas']], function () {
     Route::post('edit-jadwal-dokter/{id}',[DokterController::class,'update']);
     Route::get('delete-jadwal-dokter/{id}',[DokterController::class,'delete']);
 
-    Route::get('/whatsapp/{id}', [WhatsappController::class, 'index']);
-
     // atrian
     Route::get('antrian-dokter',[DokterController::class,'antrianDoter']);
+    Route::get('/whatsapp/{id}', [WhatsappController::class, 'index']);
     Route::get('delete-antrian/{id}',[DokterController::class,'delete_antrian']);
 });

@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Antrian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
+
 
 class WhatsappController extends Controller
 {
@@ -53,30 +58,36 @@ class WhatsappController extends Controller
 
         if($testing['kode'] == 200)
         {
-            // Alert::success('Berhasil', 'Tanggapan Berhasil Dikirim di Whatsapp');
+            Alert::success('Berhasil', 'Tanggapan Berhasil Dikirim di Whatsapp');
         }
         else if($testing['kode'] == 402)
         {
-            // Alert::error('Gagal', 'Nomor pengguna tidak terdaftar di Watsapp');
+            Alert::error('Gagal', 'Nomor pengguna tidak terdaftar di Whatsapp');
         }
         else if($testing['kode'] == 403)
         {
-            // Alert::error('Warning', 'Harap SCAN QRCODE sebelum menggunakan API');
+            Alert::error('Warning', 'Harap SCAN QRCODE sebelum menggunakan API');
         }
         else if($testing['kode'] == 500)
         {
-            // Alert::error('Gagal', 'Gagal di kirim');
+            Alert::error('Gagal', 'Gagal di kirim');
         }
         else if($testing['kode'] == 300)
         {
-            // Alert::error('Gagal', 'Gagal Kirim / Tidak ada hasil');
+            Alert::error('Gagal', 'Gagal Kirim / Tidak ada hasil');
         }else{
-            // Alert::error('Gagal', 'Gagal Kirim, Kesalahan Pada Wa Gateway');
+            Alert::error('Gagal', 'Gagal Kirim, Kesalahan Pada Wa Gateway');
         }
 
         $antrian = Antrian::where('id', $id)->first();
         $antrian->delete();
+
         
-        return redirect('antrian-dokter');
+        if(Auth::user()->roles == 'petugas'){
+            return redirect('antrian-dokter');
+        }
+        if(Auth::user()->roles == 'admin'){
+            return redirect('admin-antrian-pasien');
+        }
     }
 }

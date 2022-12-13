@@ -1,5 +1,4 @@
 @extends('template.index')
-<<<<<<< Updated upstream
 
 @section('title', 'Antrian Pasien')
 
@@ -11,6 +10,7 @@
     <div class="table-responsive text-nowrap">
         <!-- Button trigger modal -->
         @include('petugas.jadwalDokter.jadwal-create')
+        @include('sweetalert::alert')
 
         <table class="table table-hover mt-4">
             <thead>

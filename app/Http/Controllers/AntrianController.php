@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Antrian;
-use App\Models\Dokter;
 use App\Models\User;
+use App\Models\Dokter;
+use App\Models\Antrian;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AntrianController extends Controller
 {
@@ -27,6 +28,8 @@ class AntrianController extends Controller
 
         Antrian::create($hasil);
 
-        return redirect('/')->with('success', 'Antrian Berhasil Dibuat');
+        Alert::success('Berhasil', 'Antrian Berhasil Dibuat');
+
+        return redirect('/');
     }
 }

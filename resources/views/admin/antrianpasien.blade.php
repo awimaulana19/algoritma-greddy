@@ -3,6 +3,7 @@
 @section('title', 'Antrian Pasien | Admin')
 
 @section('content')
+@include('sweetalert::alert')
 <div class="row">
     <div class="col-lg-12 col-md-12 mb-4">
         <div class="card p-4">
@@ -26,7 +27,7 @@
                             <td>{{$item->email}}</td>
                             <td>{{$item->wa}}</td>
                             <td>
-                                <a href="{{url('/delete-antrian-admin/'.$item->id)}}" class="btn btn-success">Accept</a>
+                                <a href="{{url('/whatsapp-admin/'.$item->id)}}" class="btn btn-success">Accept</a>
                             </td>
                         </tr>
                         @endforeach

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Antrian;
-use App\Models\Dokter;
-use App\Models\Petugas;
 use App\Models\User;
+use App\Models\Dokter;
+use App\Models\Antrian;
+use App\Models\Petugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -45,6 +46,8 @@ class AdminController extends Controller
 
         $input->save();
 
+        Alert::success('Berhasil', 'Petugas Berhasil Dibuat');
+
         return redirect('petugas');
     }
 
@@ -78,13 +81,22 @@ class AdminController extends Controller
 
         $input->update();
 
+        Alert::success('Berhasil', 'Petugas Berhasil Diedit');
+
         return redirect('petugas');
     }
 
     public function delete($id)
     {
         $user = User::where('id', $id)->first();
+        $dokter = Dokter::where('user_id', $user->id)->get();
+        $antrian = Antrian::where('user_id',$user->id)->get();
+        
+        Dokter::destroy($dokter);
+        Antrian::destroy($antrian);
         $user->delete();
+
+        Alert::success('Berhasil', 'Petugas Berhasil Dihapus');
         return redirect('petugas');
     }
 

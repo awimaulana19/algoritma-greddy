@@ -9,6 +9,7 @@
     <div class="table-responsive text-nowrap">
         <a href="{{url('petugas-create')}}" type="button" class="btn btn-primary ms-3">Membuat Akun</a>
       <table class="table table-hover mt-4">
+        @include('sweetalert::alert')
         <thead>
           <tr>
             <th>Foto</th>

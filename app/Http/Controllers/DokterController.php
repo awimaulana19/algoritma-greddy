@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Antrian;
 use App\Models\Dokter;
+use App\Models\Antrian;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DokterController extends Controller
 {
@@ -43,6 +44,8 @@ class DokterController extends Controller
 
         $dokter->save();
 
+        Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
+
         return redirect('jadwal-dokter');
     }
 
@@ -55,6 +58,8 @@ class DokterController extends Controller
         $dokter->user_id = $request->user_id;
 
         $dokter->save();
+
+        Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
 
         return redirect('admin-jadwal-dokter');
     }
@@ -92,6 +97,7 @@ class DokterController extends Controller
 
         $dokter->update();
 
+        Alert::success('Berhasil', 'Jadwal Berhasil DiUpdate');
         return redirect('jadwal-dokter');
     }
 
@@ -103,6 +109,7 @@ class DokterController extends Controller
         $dokter->jam = $request->jam;
 
         $dokter->update();
+        Alert::success('Berhasil', 'Jadwal Berhasil DiUpdate');
 
         return redirect('admin-jadwal-dokter');
     }
@@ -111,6 +118,8 @@ class DokterController extends Controller
     {
         $dokter = Dokter::where('id', $id)->first();
         $dokter->delete();
+
+        Alert::success('Berhasil', 'Jadwal Berhasil Dihapus');
         return redirect('jadwal-dokter');
     }
 
@@ -118,6 +127,8 @@ class DokterController extends Controller
     {
         $dokter = Dokter::where('id', $id)->first();
         $dokter->delete();
+
+        Alert::success('Berhasil', 'Jadwal Berhasil Dihapus');
         return redirect('admin-jadwal-dokter');
     }
 
