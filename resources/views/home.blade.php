@@ -121,7 +121,7 @@
                     </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo consequatur enim iusto non
                         libero velit.</p>
-                    <button class="btn-hub">Hubungi Klinik</button>
+                    <a class="btn-hub" target="_blank" href="https://api.whatsapp.com/send/?phone=6282236831592&text=Apakah+anda+bisa+membantu+Saya?&type=phone_number&app_absent=0">Hubungi Klinik</a>
                 </div>
                 <div class="col-md-6 image">
                     <img src="{{ asset('assets/image/hero.png') }}" alt="" width="100%">
