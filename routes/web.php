@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\AntrianController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WhatsappController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,8 @@ Route::group(['middleware' => ['auth', 'OnlyPetugas']], function () {
     Route::get('edit-jadwal-dokter/{id}',[DokterController::class,'edit']);
     Route::post('edit-jadwal-dokter/{id}',[DokterController::class,'update']);
     Route::get('delete-jadwal-dokter/{id}',[DokterController::class,'delete']);
+
+    Route::get('/whatsapp/{id}', [WhatsappController::class, 'index']);
 
     // atrian
     Route::get('antrian-dokter',[DokterController::class,'antrianDoter']);

@@ -30,7 +30,8 @@
                     <td>{{$item->email}}</td>
                     <td>{{$item->wa}}</td>
                     <td>
-                        <a href="{{url('/delete-antrian/'.$item->id)}}" class="btn btn-success">Accept</a>
+                        <a href="{{url('/whatsapp/'.$item->id)}}" class="btn btn-success">Accept</a>
+                        {{-- <a href="{{url('/delete-antrian/'.$item->id)}}" class="btn btn-success">Accept</a> --}}
                     </td>
                 </tr>
                 @endforeach
