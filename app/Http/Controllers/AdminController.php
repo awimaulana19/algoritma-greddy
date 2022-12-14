@@ -63,7 +63,6 @@ class AdminController extends Controller
         $user->spesialis = $request->spesialis;
         $user->nomor_hp = $request->nomor_hp;
         $user->username = $request->username;
-        $user->password = Hash::make($request->password);
         $user->roles = 'petugas';
 
         $input = $user;
