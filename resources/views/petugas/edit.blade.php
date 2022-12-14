@@ -30,8 +30,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Gambar Lama</label> <br>
-                            <img src="/storage/images/{{ $user->gambar }}" alt="" width="auto" height="122px">
+                            <img src="{{ asset('storage/'.$user->gambar) }}" alt="" width="auto" height="122px">
                         </div>
+                        <input type="hidden" name="gambarLama" value="{{ $user->gambar }}">
                         <div class="mb-3">
                             <label for="nama" class="form-label">Gambar</label>
                             <input class="form-control" type="file" id="gambar" name="gambar">

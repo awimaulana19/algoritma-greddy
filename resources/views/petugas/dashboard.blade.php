@@ -13,7 +13,7 @@
                 <form action="">
                     <div class="row px-4 mb-4">
                         <div class="col-lg-4 col-md-12 mb-3">
-                            <img src="{{Auth::user()->gambar != null ? asset('storage/images/'.Auth::user()->gambar) : asset('assets/img/avatars/1.png') }}" alt class="h-auto rounded" width="100%" />
+                            <img src="{{Auth::user()->gambar != null ? asset('storage/'.Auth::user()->gambar) : asset('assets/img/avatars/1.png') }}" alt class="h-auto rounded" width="100%" />
                         </div>
 
                         <div class="col-lg-4 col-md-12 align-self-center">
@@ -90,77 +90,5 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="col-lg-3 col-md-12">
-            <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h5 class="">Surat Fakta Integritas</h5>
-                        </div>
-
-                        <div class="row px-4">
-                            <div class="col-6 text-end">
-                                <h1 class="text-primary"><i class="bi bi-file-earmark-zip-fill"></i>
-                                </h1>
-                            </div>
-                            <div class="col-6 align-self-center">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h5 class="">Surat Kontrak</h5>
-                        </div>
-
-                        <div class="row px-4">
-                            <div class="col-6 text-end">
-                                <h1 class="text-danger"><i class="bi bi-file-earmark-text-fill"></i>
-                                </h1>
-                            </div>
-                            <div class="col-6 align-self-center">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h5 class="">Surat SPMK</h5>
-                        </div>
-
-                        <div class="row px-4">
-                            <div class="col-6 text-end">
-                                <h1 class="text-warning"><i class="bi bi-file-earmark-binary-fill"></i></h1>
-                            </div>
-                            <div class="col-6 align-self-center">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6 col-sm-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h5 class="">Surat SPPBJ</h5>
-                        </div>
-
-                        <div class="row px-4">
-                            <div class="col-6 text-end">
-                                <h1 class="text-dark"><i class="bi bi-file-earmark-check-fill"></i>
-                                </h1>
-                            </div>
-                            <div class="col-6 align-self-center">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     </div>
 @endsection

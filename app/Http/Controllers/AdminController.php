@@ -8,6 +8,7 @@ use App\Models\Antrian;
 use App\Models\Petugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
@@ -37,11 +38,8 @@ class AdminController extends Controller
 
         $input = $user;
 
-        if ($gambar = $request->file('gambar')) {
-            $destinationPath = 'storage/images/';
-            $profileImage = $user->nama."-".time() . "." . $gambar->getClientOriginalExtension();
-            $gambar->move($destinationPath, $profileImage);
-            $input['gambar'] = "$profileImage";
+        if ($request->file('gambar')) {
+            $input->gambar = $request->file('gambar')->store('images');
         }
 
         $input->save();
@@ -65,18 +63,16 @@ class AdminController extends Controller
         $user->spesialis = $request->spesialis;
         $user->nomor_hp = $request->nomor_hp;
         $user->username = $request->username;
-        $user->gambar = $request->gambar;
         $user->password = Hash::make($request->password);
         $user->roles = 'petugas';
 
         $input = $user;
 
-        if ($gambar = $request->file('gambar')) {
-            $destinationPath = 'storage/images/';
-            $profileImage = $user->nama."-".time() . "." . $gambar->getClientOriginalExtension();
-            $gambar->move($destinationPath, $profileImage);
-            $input['gambar'] = "$profileImage";
-            $input->update();
+        if ($request->file('gambar')) {
+            if ($request->gambarLama){
+                Storage::delete($request->gambarLama);
+            }
+            $input->gambar = $request->file('gambar')->store('images');
         }
 
         $input->update();
@@ -91,7 +87,11 @@ class AdminController extends Controller
         $user = User::where('id', $id)->first();
         $dokter = Dokter::where('user_id', $user->id)->get();
         $antrian = Antrian::where('user_id',$user->id)->get();
-        
+
+
+        if ($user->gambar){
+            Storage::delete($user->gambar);
+        }
         Dokter::destroy($dokter);
         Antrian::destroy($antrian);
         $user->delete();

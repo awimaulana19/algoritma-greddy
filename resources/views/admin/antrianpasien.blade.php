@@ -21,15 +21,20 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                         @foreach ($antrian as $item)
+                        @if ($item->verifikasi_pesan != 1)
                         <tr>
                             <td>{{$item->nama}}</td>
                             <td>{{$item->user->nama}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->wa}}</td>
                             <td>
-                                <a href="{{url('/whatsapp-admin/'.$item->id)}}" class="btn btn-success">Accept</a>
+                                <input type="hidden" name="verifikasi_pesan" value="1">
+                                <a href="{{ url('/whatsapp-admin/' . $item->id) }}" class="btn btn-success" onclick="confirm('Apakah ingin di verifikasi?')">
+                                        Accept
+                                </a>
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

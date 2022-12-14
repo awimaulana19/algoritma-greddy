@@ -12,7 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class WhatsappController extends Controller
 {
-    public function index($id) 
+    public function index($id)
     {
         $item = Antrian::find($id);
 
@@ -20,9 +20,9 @@ class WhatsappController extends Controller
         $data_user = $item->wa;
 
 
-        $isi_pesan = "Halo ".$data.
-        " Terima Kasih Telah Mendaftar Antrian. Beradasarkan dengan antrian prioritas kami maka antrian anda berada di antrian *data* pada hari *data* tanggal *data* jam *data* ";
-        
+        $isi_pesan = "Halo " . $data .
+            " Terima Kasih Telah Mendaftar Antrian. Beradasarkan dengan antrian prioritas kami maka antrian anda berada di antrian *data* pada hari *data* tanggal *data* jam *data* ";
+
         $api_key   = '469d065c8788ab986e8486312fe68b8f9d21155b'; // API KEY Anda
         $id_device = '2077'; // ID DEVICE yang di SCAN (Sebagai pengirim)
         $url   = 'https://api.watsap.id/send-message'; // URL API
@@ -56,38 +56,39 @@ class WhatsappController extends Controller
 
         // dd($data_post, $testing);
 
-        if($testing['kode'] == 200)
-        {
+        if ($testing['kode'] == 200) {
             Alert::success('Berhasil', 'Tanggapan Berhasil Dikirim di Whatsapp');
-        }
-        else if($testing['kode'] == 402)
-        {
+        } else if ($testing['kode'] == 402) {
             Alert::error('Gagal', 'Nomor pengguna tidak terdaftar di Whatsapp');
-        }
-        else if($testing['kode'] == 403)
-        {
+        } else if ($testing['kode'] == 403) {
             Alert::error('Warning', 'Harap SCAN QRCODE sebelum menggunakan API');
-        }
-        else if($testing['kode'] == 500)
-        {
+        } else if ($testing['kode'] == 500) {
             Alert::error('Gagal', 'Gagal di kirim');
-        }
-        else if($testing['kode'] == 300)
-        {
+        } else if ($testing['kode'] == 300) {
             Alert::error('Gagal', 'Gagal Kirim / Tidak ada hasil');
-        }else{
+        } else {
             Alert::error('Gagal', 'Gagal Kirim, Kesalahan Pada Wa Gateway');
         }
 
-        $antrian = Antrian::where('id', $id)->first();
-        $antrian->delete();
 
-        
-        if(Auth::user()->roles == 'petugas'){
+        $antrian = Antrian::where('id', $id)->first();
+        // $antrian->delete();
+        $antrian->update([
+            "verifikasi_pesan" => 1
+        ]);
+
+
+        if (Auth::user()->roles == 'petugas') {
             return redirect('antrian-dokter');
         }
-        if(Auth::user()->roles == 'admin'){
+        if (Auth::user()->roles == 'admin') {
             return redirect('admin-antrian-pasien');
         }
+    }
+
+    public function history_antrian()
+    {
+        $antrian = Antrian::where('verifikasi_pesan', '=', '1')->get();
+        return view('petugas.antrian.history', compact('antrian'));
     }
 }

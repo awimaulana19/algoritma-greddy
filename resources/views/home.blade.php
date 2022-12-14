@@ -143,10 +143,10 @@
 
             <div class="row mt-2">
                 @foreach ($user as $item)
-                
+
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="{{$item->gambar != null ? asset('storage/images/'.$item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto"  width="100%" height="360px" class="gambar" />
+                        <img src="{{$item->gambar != null ? asset('storage/'.$item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto"  width="100%" height="360px" class="gambar" />
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
                             data-bs-target="#dokter{{ $item->id }}">
@@ -161,7 +161,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <img src="{{$item->gambar != null ? asset('storage/images/'.$item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto" width="100%" />
+                                                <img src="{{$item->gambar != null ? asset('storage/'.$item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto" width="100%" />
                                             </div>
                                             <div class="col-md-7 align-self-center">
                                                 <div class="row">
@@ -189,7 +189,7 @@
                                                     <tbody>
                                                         @foreach ($item->dokter as $dok)
                                                         <tr>
-                                                            <td>{{\Carbon\Carbon::parse($dok->tanggal)->isoFormat('dddd')}}</td>  
+                                                            <td>{{\Carbon\Carbon::parse($dok->tanggal)->isoFormat('dddd')}}</td>
                                                             <td>{{ $dok->tanggal }}</td>
                                                             <td>{{ $dok->jam }}</td>
                                                         </tr>
@@ -250,7 +250,7 @@
                             </div>
                         </div>
                     </div>
-                </div>    
+                </div>
                 @endforeach
             </div>
         </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('wa');
             $table->foreignId('user_id');
+            $table->string('verifikasi_pesan')->default(0);
             $table->timestamps();
         });
     }
