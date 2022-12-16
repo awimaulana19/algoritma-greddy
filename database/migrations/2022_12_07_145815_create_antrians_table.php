@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('antrians', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('email');
             $table->string('wa');
+            $table->string('tgl_periksa');
+            $table->string('jam_periksa');
             $table->foreignId('user_id');
+            $table->string('deskripsi');
             $table->string('verifikasi_pesan')->default(0);
             $table->timestamps();
         });

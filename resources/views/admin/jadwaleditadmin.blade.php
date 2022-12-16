@@ -18,9 +18,9 @@
                         <label class="input-group-text">Jam</label>
                         <select class="form-select" name="jam">
                             <option selected="">Pilih Waktu</option>
-                            <option value="08:00 - 12:00" {{($dokter->jam === '08:00 - 12:00') ? 'Selected' : ''}}>08:00 - 12:00</option>
-                            <option value="13:30 - 17:00" {{($dokter->jam === '13:30 - 17:00') ? 'Selected' : ''}}>13:30 - 17:00</option>
-                            <option value="19:00 - 22:00" {{($dokter->jam === '19:00 - 22:00') ? 'Selected' : ''}}>19:00 - 22:00</option>
+                            <option value="1" {{($dokter->jam === '1') ? 'Selected' : ''}}>08:00 - 12:00</option>
+                            <option value="2" {{($dokter->jam === '2') ? 'Selected' : ''}}>13:30 - 17:00</option>
+                            <option value="3" {{($dokter->jam === '3') ? 'Selected' : ''}}>19:00 - 22:00</option>
                         </select>
                     </div>
                 </div>

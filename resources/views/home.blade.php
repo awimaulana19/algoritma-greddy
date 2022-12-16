@@ -72,15 +72,6 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-3 col-form-label" for="email">Email</label>
-                                    <div class="col-9">
-                                        <div class="input-group input-group-merge">
-                                            <input type="text" id="email" name="email" class="form-control"
-                                                placeholder="Email" aria-label="Email" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
                                     <label class="col-3 col-form-label" for="wa">Nomor WA</label>
                                     <div class="col-9">
                                         <input type="text" id="wa" name="wa"
@@ -89,13 +80,65 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
+                                    <label class="col-3 col-form-label" for="wa">Tanggal</label>
+                                    <div class="col-9">
+                                        <input type="date" id="tgl_periksa" onchange="cetak()" name="tgl_periksa"
+                                            class="form-control phone-mask"
+                                            aria-describedby="basic-default-phone" />
+                                    </div>
+                                </div>
+                              
+                                
+                                <div class="row mb-3">
+                                    <label class="col-3 col-form-label" for="jam_periksa">Jam</label>
+                                    <div class="col-9">
+                                        <select class="form-select" id="jam_periksa" onchange="cetak()" name="jam_periksa">
+                                            <option value="">Pilih Jam</option>
+                                            <option value="1">08:00 - 12:00</option>
+                                            <option value="2">13:00 - 17:00</option>
+                                            <option value="3">19:00 - 22:00</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+
+                                    
+                                    <script>
+                                        function cetak() {
+                                            var tanggal = document.getElementById("tgl_periksa").value ;
+                                            document.getElementById("tgl").innerHTML = tanggal;
+                                           
+                                            var jam = document.getElementById("jam_periksa").value;
+                                            document.getElementById("jam").innerHTML = jam;
+                                        }
+                                    </script>
+                                    <p id="tgl"></p>
+                                    <p id="jam"></p>
+
                                     <label for="dokter" class="col-3 col-form-label">Pilihan Dokter</label>
                                     <div class="col-9">
-                                        <select class="form-select" id="dokter" name="user_id">
+                                        
+                                        <select class="form-select" id="dokter" name="user_id" 
+                                            @foreach ($jadwal as $item)
+                                                {{$item->tanggal == "<script>cetak().tanggal</script"  &&  $item->jam == "<script>cetak().jam</scrip>"  ? '' :'disabled' }}
+                                            @endforeach 
+                                        >
+                                            <option value="">Pilih Dokter</option>
                                             @foreach ($user as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                              
+ 
+                               
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                        <label for="deskripsi" class="col-form-label">Deskripsi</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea class="form-control" name="deskripsi" id="deskripsi" cols="auto" rows="5" placeholder="masukkan deskripsi penyakit"></textarea>
                                     </div>
                                 </div>
                             </div>
