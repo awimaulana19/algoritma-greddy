@@ -4,7 +4,7 @@
 @section('content')
     <div class="card p-4">
         <div class="d-flex">
-            <h4>Jadwal</h4>
+            <h5>Jadwal Dokter</h5>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Tambah Jadwal

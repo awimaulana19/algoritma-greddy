@@ -146,4 +146,10 @@ class DokterController extends Controller
         return redirect('admin-antrian-pasien');
     }
 
+    public function validasiAntrianPasien($id)
+    {
+        $antrian = Antrian::where('id',$id)->first();
+        return view('petugas.antrian.validasiantrian',compact('antrian'));
+    }
+
 }

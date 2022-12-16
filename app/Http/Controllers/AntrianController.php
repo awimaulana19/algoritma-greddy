@@ -14,10 +14,10 @@ class AntrianController extends Controller
 
         $user = User::where('roles','=','petugas')->get();
         $jadwal = Dokter::get();
-        // dd($jadwal);
+        
         return view('home',compact('user'),compact('jadwal'));
     }
-    
+
 
     public function store(Request $request){
         $hasil = $request->validate([

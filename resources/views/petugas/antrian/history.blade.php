@@ -5,7 +5,7 @@
 @section('content')
 {{-- antrain sebelum verifikasi --}}
 <div class="card">
-    <h5 class="card-header">Antrian</h5>
+    <h5 class="card-header">History Antrian</h5>
 
     <div class="table-responsive text-nowrap">
         <!-- Button trigger modal -->
@@ -16,8 +16,6 @@
                 <tr>
                     <th>No Antrian</th>
                     <th>Nama Pasien</th>
-                    <th>Email</th>
-                    <th>Whatsapp</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -27,7 +25,6 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$item->nama}}</td>
-                    <td>{{$item->email}}</td>
                     <td>{{$item->wa}}</td>
                     <td>
                         Telah Di Verifikasi

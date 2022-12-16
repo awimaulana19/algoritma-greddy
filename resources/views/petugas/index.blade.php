@@ -15,7 +15,7 @@
             <th>Foto</th>
             <th>Nama</th>
             <th>Spesialis</th>
-            <th>Nomor Handphone</th>
+            <th>Whatsapp</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>

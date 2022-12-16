@@ -87,8 +87,8 @@
                                             aria-describedby="basic-default-phone" />
                                     </div>
                                 </div>
-                              
-                                
+
+
                                 <div class="row mb-3">
                                     <label class="col-3 col-form-label" for="jam_periksa">Jam</label>
                                     <div class="col-9">
@@ -102,12 +102,12 @@
                                 </div>
                                 <div class="row mb-3">
 
-                                    
+
                                     <script>
                                         function cetak() {
                                             var tanggal = document.getElementById("tgl_periksa").value ;
                                             document.getElementById("tgl").innerHTML = tanggal;
-                                           
+
                                             var jam = document.getElementById("jam_periksa").value;
                                             document.getElementById("jam").innerHTML = jam;
                                         }
@@ -117,11 +117,11 @@
 
                                     <label for="dokter" class="col-3 col-form-label">Pilihan Dokter</label>
                                     <div class="col-9">
-                                        
-                                        <select class="form-select" id="dokter" name="user_id" 
+
+                                        <select class="form-select" id="dokter" name="user_id"
                                             @foreach ($jadwal as $item)
-                                                {{$item->tanggal == "<script>cetak().tanggal</script"  &&  $item->jam == "<script>cetak().jam</scrip>"  ? '' :'disabled' }}
-                                            @endforeach 
+                                                {{$item->tanggal == "<script>cetak().tanggal</script"  &&  $item->jam == "<script>cetak().jam</scrip>"  ? 'disabled' :'' }}
+                                            @endforeach
                                         >
                                             <option value="">Pilih Dokter</option>
                                             @foreach ($user as $item)
@@ -130,9 +130,9 @@
                                         </select>
                                     </div>
                                 </div>
-                              
- 
-                               
+
+
+
                                 <div class="row mb-3">
                                     <div class="col-3">
                                         <label for="deskripsi" class="col-form-label">Deskripsi</label>

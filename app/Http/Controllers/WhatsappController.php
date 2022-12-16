@@ -23,7 +23,7 @@ class WhatsappController extends Controller
         $mulai = $item->jam_mulai;
         $akhir = $item->perkiraan;
         $hari = \Carbon\Carbon::parse($item->antrian->tanggal)->isoFormat('dddd');
-        $tanggal = $item->antrian->tanggal;
+        $tanggal = $item->antrian->tgl_periksa;
 
         $isi_pesan = "Halo " . $nama .
             " Terima Kasih Telah Mendaftar Antrian. Beradasarkan dengan antrian prioritas kami maka antrian anda berada di jam ".$mulai.".00 sampai ".$akhir.".00 pada hari ".$hari." tanggal ".$tanggal." ";

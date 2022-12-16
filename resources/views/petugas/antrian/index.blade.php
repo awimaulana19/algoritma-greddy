@@ -17,7 +17,6 @@
                     <tr>
                         <th>No Antrian</th>
                         <th>Nama Pasien</th>
-                        <th>Email</th>
                         <th>Whatsapp</th>
                         <th>Actions</th>
                     </tr>
@@ -28,13 +27,20 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama }}</td>
-                                <td>{{ $item->email }}</td>
                                 <td>{{ $item->wa }}</td>
                                 <td>
+                                    @if ($item->verifikasi_pasien != 1)
+                                    <a href="{{ url('/validasi-pasien/'.$item->id) }}" class="btn btn-success">
+                                            Lihat
+                                    </a>
+                                    @endif
+
+                                    @if($item->verifikasi_pasien != 0)
                                     <input type="hidden" name="verifikasi_pesan" value="1">
                                     <a href="{{ url('/whatsapp/' . $item->id) }}" class="btn btn-success" onclick="confirm('Apakah ingin di verifikasi?')">
-                                            Accept
+                                        Kirim Pesan
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endif

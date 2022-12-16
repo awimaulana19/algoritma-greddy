@@ -9,7 +9,7 @@
             <div class="card p-4">
                 <div class="card p-4">
                     <div class="d-flex">
-                        <h4>Jadwal Seluruh Dokter</h4>
+                        <h5>Jadwal Seluruh Dokter</h5>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">

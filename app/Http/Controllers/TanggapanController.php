@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Antrian;
 use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,8 @@ class TanggapanController extends Controller
 {
     public function index(Request $request)
     {
+
+
         $buat = new Tanggapan();
 
         $buat->antrian_id = $request->antrian_id;
@@ -19,13 +22,16 @@ class TanggapanController extends Controller
         $buat->jam_akhir = $request->jam_akhir;
         $buat->lama = $request->lama;
         $buat->perkiraan = $request->jam_mulai + $request->lama;
-        
+
         $buat->save();
+
+        $antrian = Antrian::where('id',$buat->antrian_id)->first();
+        $antrian->verifikasi_pasien = $request->verifikasi_pasien;
+        $antrian->update();
 
         $jam = $request->jam_id;
         $pasien = Tanggapan::where('jam_id','=', $jam)->get();
         $max_selesai = 0;
-        // $result = [];
 
         foreach ($pasien as $p) {
             if ($p->jam_mulai < $max_selesai) {
@@ -36,14 +42,12 @@ class TanggapanController extends Controller
 
             if ($p->perkiraan > $p->jam_akhir) {
                 $p->delete();
+                $antrian->delete();
                 continue;
             }
 
             $max_selesai = $p->perkiraan;
-            // $result[] = $p->antrian->nama;
         }
-
-        // return $result;
 
         if (Auth::user()->roles == 'petugas') {
             return redirect('antrian-dokter');

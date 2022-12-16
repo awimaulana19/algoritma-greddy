@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('tgl_periksa');
             $table->string('jam_periksa');
             $table->foreignId('user_id');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
+            $table->string('verifikasi_pasien')->default(0);
             $table->string('verifikasi_pesan')->default(0);
             $table->timestamps();
         });
