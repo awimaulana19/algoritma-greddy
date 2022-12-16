@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Antrian;
+use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -14,19 +15,23 @@ class WhatsappController extends Controller
 {
     public function index($id)
     {
-        $item = Antrian::find($id);
+        $item = Tanggapan::where('antrian_id', $id)->first();
+        // $item = Antrian::find($id);
 
-        $data = $item->nama;
-        $data_user = $item->wa;
+        $wa = $item->antrian->wa;
+        $nama = $item->antrian->nama;
+        $mulai = $item->jam_mulai;
+        $akhir = $item->perkiraan;
+        $hari = \Carbon\Carbon::parse($item->antrian->tanggal)->isoFormat('dddd');
+        $tanggal = $item->antrian->tanggal;
 
-
-        $isi_pesan = "Halo " . $data .
-            " Terima Kasih Telah Mendaftar Antrian. Beradasarkan dengan antrian prioritas kami maka antrian anda berada di antrian *data* pada hari *data* tanggal *data* jam *data* ";
+        $isi_pesan = "Halo " . $nama .
+            " Terima Kasih Telah Mendaftar Antrian. Beradasarkan dengan antrian prioritas kami maka antrian anda berada di jam ".$mulai.".00 sampai ".$akhir.".00 pada hari ".$hari." tanggal ".$tanggal." ";
 
         $api_key   = '469d065c8788ab986e8486312fe68b8f9d21155b'; // API KEY Anda
         $id_device = '2077'; // ID DEVICE yang di SCAN (Sebagai pengirim)
         $url   = 'https://api.watsap.id/send-message'; // URL API
-        $no_hp = $data_user; // No.HP yang dikirim (No.HP Penerima)
+        $no_hp = $wa; // No.HP yang dikirim (No.HP Penerima)
         $pesan = $isi_pesan; // Pesan yang dikirim
 
         $curl = curl_init();

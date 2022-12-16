@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function antrian(){
         return $this->hasMany(Antrian::class);
     }
+
+    public function tanggapan(){
+        return $this->hasMany(Tanggapan::class);
+    }
 }
