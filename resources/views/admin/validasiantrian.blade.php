@@ -1,6 +1,6 @@
 @extends('template.index')
 
-@section('title', 'Validasi Antrian')
+@section('title', 'Validasi Antrian | Admin')
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-md-12 mb-4">
@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{url('/buat-tanggapan')}}" method="POST">
+                    <form action="{{url('/buat-tanggapan-admin')}}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Penyakit</label>
@@ -45,7 +45,7 @@
                             @endif
 
                             <input type="hidden" name="verifikasi_pasien" value="1">
-                            <button type="submit" class="btn btn-success" onclick="confirm('Apakah ingin di terima?')">
+                            <button type="submit" class="btn btn-success mt-3" onclick="confirm('Apakah ingin di terima?')">
                                 Accept
                             </button>
                         </div>

@@ -1,6 +1,6 @@
 @extends('template.index')
 
-@section('title', 'Jadwal Edit')
+@section('title', 'Jadwal Edit | Admin')
 @section('content')
 
 <div class="col-12 mx-auto">

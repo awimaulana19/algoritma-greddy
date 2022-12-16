@@ -22,7 +22,7 @@ class WhatsappController extends Controller
         $nama = $item->antrian->nama;
         $mulai = $item->jam_mulai;
         $akhir = $item->perkiraan;
-        $hari = \Carbon\Carbon::parse($item->antrian->tanggal)->isoFormat('dddd');
+        $hari = \Carbon\Carbon::parse($item->antrian->tgl_periksa)->isoFormat('dddd');
         $tanggal = $item->antrian->tgl_periksa;
 
         $isi_pesan = "Halo " . $nama .
