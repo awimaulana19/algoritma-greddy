@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\AdminUpdateRequest;
+use App\Models\Tanggapan;
 
 class AdminController extends Controller
 {
@@ -87,6 +88,7 @@ class AdminController extends Controller
         $user = User::where('id', $id)->first();
         $dokter = Dokter::where('user_id', $user->id)->get();
         $antrian = Antrian::where('user_id', $user->id)->get();
+        $tanggapan = Tanggapan::where('user_id', $user->id)->get();
 
 
         if ($user->gambar) {
@@ -94,6 +96,7 @@ class AdminController extends Controller
         }
         Dokter::destroy($dokter);
         Antrian::destroy($antrian);
+        Tanggapan::destroy($tanggapan);
         $user->delete();
 
         Alert::success('Berhasil', 'Petugas Berhasil Dihapus');
