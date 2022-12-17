@@ -28,7 +28,6 @@ class AdminRequest extends FormRequest
             'spesialis' => 'required',
             'nomor_hp' => 'required',
             'username' => 'required | unique:users',
-            'gambar' => 'required',
             'password' => 'required|min:3',
         ];
     }
@@ -41,7 +40,6 @@ class AdminRequest extends FormRequest
             'nomor_hp.required' => 'Nomor HP tidak boleh kosong',
             'username.required' => 'Username tidak boleh kosong',
             'username.unique' => 'Username sudah terpakai',
-            'gambar.required' => 'Gambar tidak boleh kosong',
             'password.required' => 'Password tidak boleh kosong',
             'password.min' => 'Password tidak boleh kurang dari 3 karakter'
         ];

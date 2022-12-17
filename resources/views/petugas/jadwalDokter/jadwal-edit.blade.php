@@ -23,7 +23,7 @@
                     <div class="input-group">
                         <label class="input-group-text">Jam</label>
                         <select class="form-select @error('jam') is-invalid @enderror" name="jam">
-                            <option disabled>Pilih Waktu</option>
+                            <option selected value="0" >Pilih Waktu</option>
                             <option value="1" {{($dokter->jam === '1') ? 'Selected' : ''}}>08:00 - 12:00</option>
                             <option value="2" {{($dokter->jam === '2') ? 'Selected' : ''}}>13:00 - 17:00</option>
                             <option value="3" {{($dokter->jam === '3') ? 'Selected' : ''}}>19:00 - 22:00</option>

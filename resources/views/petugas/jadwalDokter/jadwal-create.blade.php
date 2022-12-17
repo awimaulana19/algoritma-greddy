@@ -23,7 +23,7 @@
                           <div class="input-group">
                               <label class="input-group-text">Jam</label>
                               <select class="form-select  @error('jam') is-invalid @enderror" name="jam">
-                                  <option>Pilih Waktu</option>
+                                  <option selected value="0">Pilih Waktu</option>
                                   <option value="1">08:00 - 12:00</option>
                                   <option value="2">13:00 - 17:00</option>
                                   <option value="3">19:00 - 22:00</option>

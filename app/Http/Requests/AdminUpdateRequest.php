@@ -28,7 +28,6 @@ class AdminUpdateRequest extends FormRequest
             'spesialis' => 'required',
             'nomor_hp' => 'required',
             'username' => 'required',
-            'gambar' => 'required',
         ];
     }
 
@@ -40,7 +39,6 @@ class AdminUpdateRequest extends FormRequest
             'spesialis.required' => 'Spesialis tidak boleh kosong',
             'nomor_hp.required' => 'Nomor HP tidak boleh kosong',
             'username.required' => 'Username tidak boleh kosong',
-            'gambar.required' => 'Gambar tidak boleh kosong',
         ];
     }
 }

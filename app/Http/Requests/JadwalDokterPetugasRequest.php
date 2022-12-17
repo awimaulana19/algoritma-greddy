@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,16 +26,19 @@ class JadwalDokterPetugasRequest extends FormRequest
     public function rules()
     {
         return [
-            'tanggal' => 'required',
-            'jam' => 'required',
+            'tanggal' => ['required', 'date', 'after:'.Carbon::today()->toDateString()],
+            'jam' => 'required|not_in:0',
         ];
     }
+
 
     public function messages()
     {
         return[
             'tanggal.required' => 'Tanggal tidak boleh kosong',
+            'tanggal.after' => 'Tanggal tidak boleh kurang dari hari ini',
             'jam.required' => 'Jam tidak boleh kosong',
+            'jam.not_in' => 'Jam tidak boleh kosong',
             Alert::error('Gagal', 'Jadwal Gagal Dibuat')
         ];
     }
