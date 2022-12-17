@@ -156,7 +156,7 @@
                 @foreach ($user as $item)
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="{{ $item->gambar != null ? asset('storage/' . $item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto" width="100%" height="360px" class="gambar" />
+                            <img src="{{ $item->gambar != null ? asset('storage/' . $item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto" width="100%" height="360px" class="gambar" style="object-fit: cover"/>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#dokter{{ $item->id }}">
                                 Detail Dokter
