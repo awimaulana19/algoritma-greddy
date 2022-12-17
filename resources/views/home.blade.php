@@ -375,6 +375,15 @@
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col-3">
+                                                                <label for="deskripsi" class="col-form-label">Deskripsi</label>
+                                                            </div>
+                                                            <div class="col-9">
+                                                                <textarea class="form-control" name="deskripsi" id="deskripsi" cols="auto" rows="5"
+                                                                    placeholder="masukkan deskripsi penyakit"></textarea>
+                                                            </div>
+                                                        </div>
                                                         <input id="dokter" type="hidden" name="user_id"
                                                             value="{{ $item->id }}">
                                                     </div>
