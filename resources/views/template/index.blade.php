@@ -73,7 +73,7 @@
                                 <div data-i18n="Analytics">Antrian Pasien</div>
                             </a>
                         </li>
-                        <li @if (request()->route()->uri == 'admin-history-antrian') class="menu-item active mt-3" @else class="menu-item" @endif>
+                        <li @if (request()->route()->uri == 'admin-history-antrian') class="menu-item active" @else class="menu-item" @endif>
                             <a href="{{ url('admin-history-antrian') }}" class="menu-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history me-3" viewBox="0 0 16 16">
                                     <path
@@ -89,7 +89,7 @@
                             <span class="menu-header-text">Dokter</span>
                         </li>
 
-                        <li @if (request()->route()->uri == 'jadwal-dokter' || request()->route()->uri == 'edit-jadwal-dokter/{id}') class="menu-item active mt-3" @else class="menu-item" @endif>
+                        <li @if (request()->route()->uri == 'jadwal-dokter' || request()->route()->uri == 'edit-jadwal-dokter/{id}') class="menu-item active" @else class="menu-item" @endif>
                             <a href="{{ url('jadwal-dokter') }}" class="menu-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar me-3" viewBox="0 0 16 16">
                                     <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
@@ -112,7 +112,7 @@
                             </a>
                         </li>
 
-                        <li @if (request()->route()->uri == 'history-antrian') class="menu-item active mt-3" @else class="menu-item" @endif>
+                        <li @if (request()->route()->uri == 'history-antrian') class="menu-item active" @else class="menu-item" @endif>
                             <a href="{{ url('history-antrian') }}" class="menu-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history me-3" viewBox="0 0 16 16">
                                     <path

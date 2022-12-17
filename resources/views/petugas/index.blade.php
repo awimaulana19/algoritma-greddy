@@ -4,10 +4,16 @@
 @section('title', 'petugas')
 @section('content')
 <div class="card">
-    <h5 class="card-header">Dokter</h5>
+  <div class="d-flex">
+    <div>
+      <h5 class="card-header align-self-center">Halaman Dokter</h5>
+    </div>
+    <div class="ms-auto p-4">
+      <a href="{{url('petugas-create')}}" type="button" class="btn btn-primary ms-3">Membuat Akun</a>
+    </div>
+  </div>
 
-    <div class="table-responsive text-nowrap">
-        <a href="{{url('petugas-create')}}" type="button" class="btn btn-primary ms-3">Membuat Akun</a>
+    <div class="table-responsive text-nowrap ps-3">
       <table class="table table-hover mt-4">
         @include('sweetalert::alert')
         <thead>

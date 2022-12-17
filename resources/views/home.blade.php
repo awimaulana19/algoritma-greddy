@@ -49,7 +49,7 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="post" action="/">
+                <form method="post" action="/" style="height: 90vh; overflow:auto;">
                     @csrf
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Daftar Antrian</h1>
@@ -168,20 +168,37 @@
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-4">
                                                     <img src="{{ $item->gambar != null ? asset('storage/' . $item->gambar) : asset('assets/img/avatars/1.png') }}" alt="foto" width="100%" />
                                                 </div>
-                                                <div class="col-md-7 align-self-center">
+                                                <div class="col-md-8 align-self-center">
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <p>Nama</p>
-                                                            <p>Spesialis</p>
-                                                            <p>Nomor Telp</p>
+                                                            Nama
                                                         </div>
-                                                        <div class="col-8">
-                                                            <p> : {{ $item->nama }}</p>
-                                                            <p> : {{ $item->spesialis }}</p>
-                                                            <p> : {{ $item->nomor_hp }}</p>
+                                                        <div class="col-1">
+                                                            :
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <span>{{ $item->nama }}</span> 
+                                                        </div>
+                                                        <div class="col-4">
+                                                            Spesialis
+                                                        </div>
+                                                        <div class="col-1">
+                                                            :
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <span>{{ $item->spesialis }}</span> 
+                                                        </div>
+                                                        <div class="col-4">
+                                                            No.Telp
+                                                        </div>
+                                                        <div class="col-1">
+                                                            :
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <span>{{ $item->nomor_hp }}</span> 
                                                         </div>
                                                     </div>
                                                 </div>

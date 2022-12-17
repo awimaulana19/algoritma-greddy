@@ -55,14 +55,14 @@
                             <h4>Jumlah Jadwal</h4>
                         </div>
 
-                        <div class="row px-4">
+                        <div class="row pb-3">
                             <div class="col-6 text-end mb-2">
                                 <img src="{{ asset('assets/image/calendar.png') }}" alt="" width="50%">
                             </div>
                             <div class="col-1 align-self-center">
                                 <h1>=</h1>
                             </div>
-                            <div class="col-2 align-self-center">
+                            <div class="col-5 align-self-center">
                                 <h1>{{ $user->dokter->count() }}</h1>
                             </div>
                         </div>
@@ -75,14 +75,14 @@
                             <i class="bi bi-folder-fill"></i>
                         </div>
 
-                        <div class="row px-4">
+                        <div class="row pb-3">
                             <div class="col-6 text-end mb-2">
                                 <img src="{{ asset('assets/image/pembukuan.jpg') }}" alt="" width="30%">
                             </div>
                             <div class="col-1 align-self-center">
                                 <h1>=</h1>
                             </div>
-                            <div class="col-2 align-self-center">
+                            <div class="col-5 align-self-center">
                                 <h1>{{ $user->antrian->count() }}</h1>
                             </div>
                         </div>
