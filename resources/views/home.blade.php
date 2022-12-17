@@ -131,7 +131,7 @@
                     </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo consequatur enim iusto non
                         libero velit.</p>
-                    <a class="btn-hub" target="_blank" href="https://api.whatsapp.com/send/?phone=6282236831592&text=Apakah+anda+bisa+membantu+Saya?&type=phone_number&app_absent=0">Hubungi
+                    <a class="btn-hub" target="_blank" href="https://api.whatsapp.com/send/?phone=6282226841562&text=Apakah+anda+bisa+membantu+Saya?&type=phone_number&app_absent=0">Hubungi
                         Klinik</a>
                 </div>
                 <div class="col-md-6 image">

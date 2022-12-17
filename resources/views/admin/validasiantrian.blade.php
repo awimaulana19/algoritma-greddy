@@ -18,7 +18,13 @@
                         </div>
                         <div>
                             <label for="nama" class="form-label">Lama Kerja(Jam)</label>
-                            <input class="form-control" type="number" name="lama" placeholder="masukan waktu lama kerja">
+                            <input class="form-control  @error('lama') is-invalid @enderror" type="number" name="lama" placeholder="masukan waktu lama kerja">
+                            @error('lama')
+                            <div class="invalid-feedback">
+                                    <i class="bi bi-exclamation-circle-fill"></i>
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="px-4 mb-4 d-flex justify-content-end">

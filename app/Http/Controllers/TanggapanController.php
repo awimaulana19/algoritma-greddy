@@ -6,10 +6,11 @@ use App\Models\Antrian;
 use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\validasiRequest;
 
 class TanggapanController extends Controller
 {
-    public function index(Request $request)
+    public function index(validasiRequest $request)
     {
 
         $buat = new Tanggapan();
