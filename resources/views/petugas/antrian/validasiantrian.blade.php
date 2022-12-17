@@ -48,7 +48,7 @@
                             @endif
 
                             <input type="hidden" name="verifikasi_pasien" value="1">
-                            <button type="submit" class="btn btn-success" onclick="confirm('Apakah ingin di terima?')">
+                            <button type="submit" class="btn btn-success mt-3">
                                 Accept
                             </button>
                         </div>

@@ -11,27 +11,47 @@
                       @csrf
                       <div class="mb-3">
                           <label for="nama" class="form-label">Tanggal</label>
-                          <input class="form-control" type="date" name="tanggal">
+                          <input class="form-control @error('tanggal') is-invalid @enderror" type="date" name="tanggal">
+                          @error('tanggal')
+                          <div class="invalid-feedback">
+                                  <i class="bi bi-exclamation-circle-fill"></i>
+                                  {{ $message }}
+                              </div>
+                          @enderror
                       </div>
+
                       <div class="mb-3">
                           <div class="input-group">
                               <label class="input-group-text">Jam</label>
-                              <select class="form-select" name="jam">
+                              <select class="form-select @error('jam') is-invalid @enderror" name="jam">
                                   <option selected="">Pilih Waktu</option>
                                   <option value="1">08:00 - 12:00</option>
                                   <option value="2">13:00 - 17:00</option>
                                   <option value="3">19:00 - 22:00</option>
                               </select>
+                              @error('jam')
+                              <div class="invalid-feedback">
+                                      <i class="bi bi-exclamation-circle-fill"></i>
+                                      {{ $message }}
+                                  </div>
+                              @enderror
                           </div>
                       </div>
+
                       <div class="row mb-3">
                         <div class="input-group">
                         <label for="dokter" class="input-group-text">Pilihan Dokter</label>
-                            <select class="form-select" id="dokter" name="user_id">
+                            <select class="form-select @error('user_id') is-invalid @enderror" id="dokter" name="user_id">
                                 @foreach ($user as $item)
                                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
                                 @endforeach
                             </select>
+                            @error('user_id')
+                            <div class="invalid-feedback">
+                                    <i class="bi bi-exclamation-circle-fill"></i>
+                                    {{ $message }}
+                                </div>
+                            @enderror
                     </div>
                     </div>
               </div>

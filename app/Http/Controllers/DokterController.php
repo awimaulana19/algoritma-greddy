@@ -8,15 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\JadwalDokterAdminRequest;
+use App\Http\Requests\JadwalDokterPetugasRequest;
 
 class DokterController extends Controller
 {
     public function adminJadwalDokter()
     {
         $dokter = Dokter::get();
-        $user = User::where('roles','=','petugas')->get();
+        $user = User::where('roles', '=', 'petugas')->get();
 
-        return view('admin.jadwalpetugas', compact('dokter','user'));
+        return view('admin.jadwalpetugas', compact('dokter', 'user'));
     }
 
     public function adminAntrianlPasien()
@@ -24,7 +26,7 @@ class DokterController extends Controller
         $antrian = Antrian::get();
         $user = Auth::user();
 
-        return view('admin.antrianpasien',compact('antrian'),compact('user'));
+        return view('admin.antrianpasien', compact('antrian'), compact('user'));
     }
     public function dashboard()
     {
@@ -34,8 +36,9 @@ class DokterController extends Controller
         return view('petugas.dashboard', compact('dokter'), compact('user'));
     }
 
-    public function store(Request $request)
+    public function store(JadwalDokterPetugasRequest $request)
     {
+
         $dokter = new Dokter();
 
         $dokter->tanggal = $request->tanggal;
@@ -43,16 +46,19 @@ class DokterController extends Controller
         $dokter->user_id = Auth::user()->id;
 
         $dokter->save();
-        
+
         $dokter->nama = $dokter->user->nama;
         $dokter->update();
 
-        Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
+        Alert::success('Berhasil', 'Jadwal Tidak Berhasil Dibuat');
 
-        return redirect('jadwal-dokter');
+        if ($dokter->save()) {
+            Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
+            return redirect('jadwal-dokter');
+        }
     }
 
-    public function storeAdmin(Request $request)
+    public function storeAdmin(JadwalDokterAdminRequest $request)
     {
         $dokter = new Dokter();
 
@@ -66,7 +72,6 @@ class DokterController extends Controller
         $dokter->update();
 
         Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
-
         return redirect('admin-jadwal-dokter');
     }
 
@@ -94,7 +99,7 @@ class DokterController extends Controller
         return view('admin.jadwaleditadmin', compact('dokter'));
     }
 
-    public function update(Request $request, $id)
+    public function update(JadwalDokterPetugasRequest $request, $id)
     {
         $dokter = Dokter::where('id', $id)->first();
 
@@ -107,7 +112,7 @@ class DokterController extends Controller
         return redirect('jadwal-dokter');
     }
 
-    public function updateAdmin(Request $request, $id)
+    public function updateAdmin(JadwalDokterPetugasRequest $request, $id)
     {
         $dokter = Dokter::where('id', $id)->first();
 
@@ -147,21 +152,20 @@ class DokterController extends Controller
 
     public function delete_antrianAdmin($id)
     {
-        $antrian = Antrian::where('id',$id)->first();
+        $antrian = Antrian::where('id', $id)->first();
         $antrian->delete();
         return redirect('admin-antrian-pasien');
     }
 
     public function validasiAntrianPasien($id)
     {
-        $antrian = Antrian::where('id',$id)->first();
-        return view('petugas.antrian.validasiantrian',compact('antrian'));
+        $antrian = Antrian::where('id', $id)->first();
+        return view('petugas.antrian.validasiantrian', compact('antrian'));
     }
 
     public function validasiAntrianPasienAdmin($id)
     {
-        $antrian = Antrian::where('id',$id)->first();
-        return view('admin.validasiantrian',compact('antrian'));
+        $antrian = Antrian::where('id', $id)->first();
+        return view('admin.validasiantrian', compact('antrian'));
     }
-
 }

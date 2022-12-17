@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Dokter;
 use App\Models\Antrian;
-use App\Models\Petugas;
-use Illuminate\Http\Request;
+use App\Http\Requests\AdminRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\AdminUpdateRequest;
 
 class AdminController extends Controller
 {
     public function index()
     {
         $user = User::get();
-        return view('petugas.index',compact('user'));
+        return view('petugas.index', compact('user'));
     }
 
     public function create()
@@ -24,7 +24,7 @@ class AdminController extends Controller
         return view('petugas.create');
     }
 
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
         $user = new User();
 
@@ -51,24 +51,25 @@ class AdminController extends Controller
 
     public function edit($id)
     {
-        $user = User::where('id',$id)->first();
-        return view('petugas.edit',compact('user'));
+        $user = User::where('id', $id)->first();
+        return view('petugas.edit', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(AdminUpdateRequest $request, $id)
     {
-        $user = User::where('id',$id)->first();
+        $user = User::where('id', $id)->first();
 
         $user->nama = $request->nama;
         $user->spesialis = $request->spesialis;
         $user->nomor_hp = $request->nomor_hp;
         $user->username = $request->username;
+        $user->gambar = $request->gambar;
         $user->roles = 'petugas';
 
         $input = $user;
 
         if ($request->file('gambar')) {
-            if ($request->gambarLama){
+            if ($request->gambarLama) {
                 Storage::delete($request->gambarLama);
             }
             $input->gambar = $request->file('gambar')->store('images');
@@ -85,10 +86,10 @@ class AdminController extends Controller
     {
         $user = User::where('id', $id)->first();
         $dokter = Dokter::where('user_id', $user->id)->get();
-        $antrian = Antrian::where('user_id',$user->id)->get();
+        $antrian = Antrian::where('user_id', $user->id)->get();
 
 
-        if ($user->gambar){
+        if ($user->gambar) {
             Storage::delete($user->gambar);
         }
         Dokter::destroy($dokter);
@@ -104,6 +105,6 @@ class AdminController extends Controller
         $user = User::get();
         $dokter = Dokter::get();
         $antrian = Antrian::get();
-        return view('admin.dashboard',compact('user','dokter','antrian'));
+        return view('admin.dashboard', compact('user', 'dokter', 'antrian'));
     }
 }

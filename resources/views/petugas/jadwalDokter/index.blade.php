@@ -30,7 +30,13 @@
                     <tr>
                         <td>{{$item->tanggal}}</td>
                         <td>{{\Carbon\Carbon::parse($item->tanggal)->isoFormat('dddd')}}</td>
-                        <td>{{$item->jam}} WIB</td>
+                        <td>@if ($item->jam == '1')
+                            08:00 - 12:00
+                            @elseif($item->jam == '2')
+                            13:00 - 17:00
+                            @elseif($item->jam == '3')
+                            19:00 - 22:00
+                        @endif</td>
                         <td>
                             <div class="d-flex">
                                   <a class="btn btn-primary me-3" href="{{url('/edit-jadwal-dokter/'.$item->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
