@@ -64,14 +64,19 @@ class WhatsappController extends Controller
         if ($testing['kode'] == 200) {
             Alert::success('Berhasil', 'Tanggapan Berhasil Dikirim di Whatsapp');
         } else if ($testing['kode'] == 402) {
+            $item->delete();
             Alert::error('Gagal', 'Nomor pengguna tidak terdaftar di Whatsapp');
         } else if ($testing['kode'] == 403) {
+            $item->delete();
             Alert::error('Warning', 'Harap SCAN QRCODE sebelum menggunakan API');
         } else if ($testing['kode'] == 500) {
+            $item->delete();
             Alert::error('Gagal', 'Gagal di kirim');
         } else if ($testing['kode'] == 300) {
+            $item->delete();
             Alert::error('Gagal', 'Gagal Kirim / Tidak ada hasil');
         } else {
+            $item->delete();
             Alert::error('Gagal', 'Gagal Kirim, Kesalahan Pada Wa Gateway');
         }
 

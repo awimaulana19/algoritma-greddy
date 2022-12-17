@@ -19,7 +19,7 @@
                               <select class="form-select" name="jam">
                                   <option selected="">Pilih Waktu</option>
                                   <option value="1">08:00 - 12:00</option>
-                                  <option value="2">13:30 - 17:00</option>
+                                  <option value="2">13:00 - 17:00</option>
                                   <option value="3">19:00 - 22:00</option>
                               </select>
                           </div>

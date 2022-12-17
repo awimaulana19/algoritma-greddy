@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('antrian_id');
             $table->foreignId('user_id');
+            $table->string('tgl_periksa');
             $table->string('jam_id');
             $table->integer('jam_mulai');
             $table->integer('jam_akhir');

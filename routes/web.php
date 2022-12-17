@@ -7,6 +7,8 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\TanggapanController;
+use App\Models\Dokter;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,17 @@ Route::post('/', [AntrianController::class, 'store']);
 Route::get('login', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'login_action']);
 Route::get('logout', [AuthController::class, 'logout']);
+Route::get('/jadwal', function (Request $request) {
+    $tanggal = $request->input('tanggal');
+    $jam = $request->input('jam');
+  
+    $jadwals = Dokter::where('tanggal', '=', $tanggal)
+      ->where('jam', '=', $jam)
+      ->get();
+  
+    return response()->json($jadwals);
+  });
+  
 
 
 Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
@@ -44,7 +57,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::post('edit-jadwal-dokterAdmin/{id}',[DokterController::class,'updateAdmin']);
     Route::get('delete-jadwal-dokterAdmin/{id}',[DokterController::class,'deleteAdmin']);
     Route::get('admin-antrian-pasien', [DokterController::class, 'adminAntrianlPasien']);
-    Route::get('admin-validasi-pasien/{id}',[DokterController::class,'validasiAntrianPasien']);
+    Route::get('admin-validasi-pasien/{id}',[DokterController::class,'validasiAntrianPasienAdmin']);
     Route::get('/whatsapp-admin/{id}', [WhatsappController::class, 'index']);
     Route::get('delete-antrian-admin/{id}',[DokterController::class,'delete_antrianAdmin']);
     Route::get('admin-history-antrian',[WhatsappController::class,'history_antrian']);

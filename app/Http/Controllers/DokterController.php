@@ -59,6 +59,9 @@ class DokterController extends Controller
 
         $dokter->save();
 
+        $dokter->nama = $dokter->user->nama;
+        $dokter->update();
+
         Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
 
         return redirect('admin-jadwal-dokter');
@@ -150,6 +153,12 @@ class DokterController extends Controller
     {
         $antrian = Antrian::where('id',$id)->first();
         return view('petugas.antrian.validasiantrian',compact('antrian'));
+    }
+
+    public function validasiAntrianPasienAdmin($id)
+    {
+        $antrian = Antrian::where('id',$id)->first();
+        return view('admin.validasiantrian',compact('antrian'));
     }
 
 }

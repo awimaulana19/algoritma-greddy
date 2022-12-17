@@ -55,6 +55,104 @@
                 <form method="post" action="/">
                     @csrf
                     <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Daftar Antrian</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="card mb-4">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                          <h5 class="mb-0">Data Diri</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="row mb-3">
+                            <label class="col-3 col-form-label" for="nama">Nama</label>
+                            <div class="col-9">
+                              <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" />
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label class="col-3 col-form-label" for="wa">Nomor WA</label>
+                            <div class="col-9">
+                              <input type="text" id="wa" name="wa" class="form-control phone-mask" placeholder="Nomor" aria-label="Nomor" aria-describedby="basic-default-phone" />
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label class="col-3 col-form-label" for="wa">Tanggal</label>
+                            <div class="col-9">
+                              <input type="date" id="tgl_periksa" onchange="updateDokterList()" name="tgl_periksa" class="form-control phone-mask" aria-describedby="basic-default-phone" />
+                            </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-3 col-form-label" for="jam_periksa">Jam</label>
+                                <div class="col-9">
+                                  <select class="form-select" id="jam_periksa" onchange="updateDokterList()" name="jam_periksa">
+                                    <option value="">Pilih Jam</option>
+                                    <option value="1">08:00 - 12:00</option>
+                                    <option value="2">13:00 - 17:00</option>
+                                    <option value="3">19:00 - 22:00</option>
+                                  </select>
+                                </div>
+                              </div>
+                          
+                              <div class="row mb-3">
+                                <label class="col-3 col-form-label" for="dokter">Dokter</label>
+                                <div class="col-9">
+                                  <select class="form-select" id="dokter" name="user_id" disabled>
+                                    <option value="">Pilih Dokter</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                            <div class="row mb-3">
+                                <div class="col-3">
+                                    <label for="deskripsi" class="col-form-label">Deskripsi</label>
+                                </div>
+                                <div class="col-9">
+                                    <textarea class="form-control" name="deskripsi" id="deskripsi" cols="auto" rows="5" placeholder="masukkan deskripsi penyakit"></textarea>
+                                </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <button type="submit" class="btn btn-primary">Daftar</button>
+                        </div>
+                      </form>
+                      <script>
+                        async function updateDokterList() {
+                          const tanggal = document.getElementById('tgl_periksa').value;
+                          const jam = document.getElementById('jam_periksa').value;
+                      
+                          // Mengosongkan opsi yang ada pada elemen select dokter
+                          document.getElementById('dokter').innerHTML = '';
+                      
+                          // Menonaktifkan elemen select dokter
+                          document.getElementById('dokter').disabled = true;
+                      
+                          try {
+                            // Mengirim request HTTP GET ke endpoint /jadwal dengan query parameter tanggal dan jam
+                            const response = await fetch(`/jadwal?tanggal=${tanggal}&jam=${jam}`);
+                            const data = await response.json();
+                      
+                            // Menambahkan opsi baru sesuai dengan data jadwal yang didapatkan dari server
+                            data.forEach(jadwal => {
+                              const option = document.createElement('option');
+                              option.value = jadwal.user_id;
+                              option.text = jadwal.nama;
+                              document.getElementById('dokter').appendChild(option);
+                            });
+                      
+                            // Mengaktifkan elemen select dokter
+                            document.getElementById('dokter').disabled = false;
+                          } catch (error) {
+                            console.error(error);
+                          }
+                        }
+                      </script>
+                {{-- <form method="post" action="/">
+                    @csrf
+                    <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Daftar Antrian</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -101,8 +199,6 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-
-
                                     <script>
                                         function cetak() {
                                             var tanggal = document.getElementById("tgl_periksa").value ;
@@ -120,7 +216,7 @@
 
                                         <select class="form-select" id="dokter" name="user_id"
                                             @foreach ($jadwal as $item)
-                                                {{$item->tanggal == "<script>cetak().tanggal</script"  &&  $item->jam == "<script>cetak().jam</scrip>"  ? 'disabled' :'' }}
+                                                {{$item->tanggal == "<script>cetak().tanggal</script"  &&  $item->jam == "<script>cetak().jam</scrip>"  ? '' :'disabled' }}
                                             @endforeach
                                         >
                                             <option value="">Pilih Dokter</option>
@@ -148,7 +244,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Daftar</button>
                     </div>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>

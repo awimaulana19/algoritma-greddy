@@ -28,6 +28,7 @@
                                 <input type="hidden" name="jam_id" value="{{ $antrian->jam_periksa }}">
                                 <input type="hidden" name="antrian_id" value="{{ $antrian->id }}">
                                 <input type="hidden" name="user_id" value="{{ $antrian->user_id }}">
+                                <input type="hidden" name="tgl_periksa" value="{{ $antrian->tgl_periksa }}">
                             @endif
                             @if ($antrian->jam_periksa == '2')
                                 <input type="hidden" name="jam_mulai" value="13">
@@ -35,6 +36,7 @@
                                 <input type="hidden" name="jam_id" value="{{ $antrian->jam_periksa }}">
                                 <input type="hidden" name="antrian_id" value="{{ $antrian->id }}">
                                 <input type="hidden" name="user_id" value="{{ $antrian->user_id }}">
+                                <input type="hidden" name="tgl_periksa" value="{{ $antrian->tgl_periksa }}">
                             @endif
                             @if ($antrian->jam_periksa == '3')
                                 <input type="hidden" name="jam_mulai" value="19">
@@ -42,6 +44,7 @@
                                 <input type="hidden" name="jam_id" value="{{ $antrian->jam_periksa }}">
                                 <input type="hidden" name="antrian_id" value="{{ $antrian->id }}">
                                 <input type="hidden" name="user_id" value="{{ $antrian->user_id }}">
+                                <input type="hidden" name="tgl_periksa" value="{{ $antrian->tgl_periksa }}">
                             @endif
 
                             <input type="hidden" name="verifikasi_pasien" value="1">

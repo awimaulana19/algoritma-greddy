@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('dokter', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->string('nama')->nullable();
             $table->date('tanggal');
             $table->string('jam');
             $table->timestamps();

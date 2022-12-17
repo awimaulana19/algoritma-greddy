@@ -12,11 +12,11 @@ class TanggapanController extends Controller
     public function index(Request $request)
     {
 
-
         $buat = new Tanggapan();
 
         $buat->antrian_id = $request->antrian_id;
         $buat->user_id = $request->user_id;
+        $buat->tgl_periksa = $request->tgl_periksa;
         $buat->jam_id = $request->jam_id;
         $buat->jam_mulai = $request->jam_mulai;
         $buat->jam_akhir = $request->jam_akhir;
@@ -29,8 +29,13 @@ class TanggapanController extends Controller
         $antrian->verifikasi_pasien = $request->verifikasi_pasien;
         $antrian->update();
 
+        $user = $request->user_id;
+        $tanggal = $request->tgl_periksa;
         $jam = $request->jam_id;
-        $pasien = Tanggapan::where('jam_id','=', $jam)->get();
+        $pasien = Tanggapan::where('user_id', $user)
+            ->where('tgl_periksa', $tanggal)
+            ->where('jam_id', $jam)
+            ->get();
         $max_selesai = 0;
 
         foreach ($pasien as $p) {
