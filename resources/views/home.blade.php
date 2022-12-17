@@ -236,12 +236,21 @@
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
-                                                            <label class="col-3 col-form-label" for="wa">Tanggal</label>
+                                                            <label class="col-3 col-form-label"
+                                                                for="wa">Tanggal</label>
                                                             <div class="col-9">
-                                                                <select class="form-select" id="tgl_periksa" name="tgl_periksa">
+                                                                <select class="form-select" id="tgl_periksa"
+                                                                    name="tgl_periksa">
+                                                                    @php
+                                                                        $unik = $item->dokter->unique(function ($item) {
+                                                                            return $item['tanggal'];
+                                                                        });
+                                                                    @endphp
                                                                     <option>Pilih Tanggal</option>
-                                                                    @foreach ($item->dokter as $dok)
-                                                                        <option value="{{ $dok->tanggal }}">{{ \Carbon\Carbon::parse($dok->tanggal)->isoFormat('dddd') }}, {{ $dok->tanggal }}</option>
+                                                                    @foreach ($unik as $dok)
+                                                                        <option value="{{ $dok->tanggal }}">
+                                                                            {{ \Carbon\Carbon::parse($dok->tanggal)->isoFormat('dddd') }},
+                                                                            {{ $dok->tanggal }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -250,8 +259,13 @@
                                                             <label class="col-3 col-form-label" for="jam_periksa">Jam</label>
                                                             <div class="col-9">
                                                                 <select class="form-select" id="jam_periksa" name="jam_periksa">
+                                                                    @php
+                                                                        $unikjam = $item->dokter->unique(function ($item) {
+                                                                            return $item['jam'];
+                                                                        });
+                                                                    @endphp
                                                                     <option value="">Pilih Jam</option>
-                                                                    @foreach ($item->dokter as $dok)
+                                                                    @foreach ($unikjam as $dok)
                                                                         <option value="{{ $dok->jam }}">
                                                                             @if ($dok->jam == 1)
                                                                                 08:00 - 12:00
@@ -260,7 +274,6 @@
                                                                             @else
                                                                                 19:00 - 22:00
                                                                             @endif
-
                                                                         </option>
                                                                     @endforeach
                                                                 </select>

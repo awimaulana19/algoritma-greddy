@@ -20,18 +20,31 @@ class AntrianController extends Controller
 
 
     public function store(Request $request){
-        $hasil = $request->validate([
-            'nama' => 'required|max:255',
-            'wa' => 'required',
-            'tgl_periksa' => 'required',
-            'jam_periksa' => 'required',
-            'user_id' => 'required',
-            'deskripsi' => 'required'
-        ]);
+        $tanggal = $request->tgl_periksa;
+        $jam = $request->jam_periksa;
+        $user = $request->user_id;
 
-        Antrian::create($hasil);
+        $jadwal = Dokter::where('user_id', $user)
+            ->where('tanggal', $tanggal)
+            ->where('jam', $jam)
+            ->get();
+        
+        if($jadwal->isNotEmpty()){
+            $hasil = $request->validate([
+                'nama' => 'required|max:255',
+                'wa' => 'required',
+                'tgl_periksa' => 'required',
+                'jam_periksa' => 'required',
+                'user_id' => 'required',
+                'deskripsi' => 'required'
+            ]);
 
-        Alert::success('Berhasil', 'Antrian Berhasil Dibuat, Tunggu konfirmasi di Whatsapp');
+            Antrian::create($hasil);
+
+            Alert::success('Berhasil', 'Antrian Berhasil Dibuat, Tunggu konfirmasi di Whatsapp');
+        }else{
+            Alert::error('Gagal', 'Antrian Gagal Dibuat');
+        }
 
         return redirect('/');
     }

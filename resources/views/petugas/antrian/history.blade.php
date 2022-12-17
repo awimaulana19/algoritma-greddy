@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th>Nama Pasien</th>
+                    <th>Nama Dokter</th>
                     <th>Tanggal</th>
                     <th>Hari</th>
                     <th>Jam</th>
@@ -22,19 +23,21 @@
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-                @foreach ($antrian as $item)
-                @if ($item->verifikasi_pesan == 1)
+                @foreach ($tanggapan as $item)
+                @if ($item->antrian->verifikasi_pesan == 1)
                 <tr>
-                    <td>{{$item->nama}}</td>
+                    <td>{{$item->antrian->nama}}</td>
+                    <td>{{$item->user->nama}}</td>
                     <td>{{$item->tgl_periksa}}</td>
                     <td>{{\Carbon\Carbon::parse($item->tgl_periksa)->isoFormat('dddd')}}</td>
-                    <td>@if ($item->jam_periksa == '1')
+                    <td>{{$item->jam_mulai}}:00 - {{$item->perkiraan}}:00</td>
+                    {{-- <td>@if ($item->jam_periksa == '1')
                         08:00 - 12:00
                         @elseif($item->jam_periksa == '2')
                         13:00 - 17:00
                         @elseif($item->jam_periksa == '3')
                         19:00 - 22:00
-                    @endif</td>
+                    @endif</td> --}}
                     <td class="text-success">
                         Telah Di Verifikasi
                     </td>

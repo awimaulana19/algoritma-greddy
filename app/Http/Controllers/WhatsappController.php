@@ -98,7 +98,7 @@ class WhatsappController extends Controller
 
     public function history_antrian()
     {
-        $antrian = Antrian::where('verifikasi_pesan', '=', '1')->get();
-        return view('petugas.antrian.history', compact('antrian'));
+        $tanggapan = Tanggapan::orderBy('tgl_periksa', 'asc')->get();
+        return view('petugas.antrian.history', compact('tanggapan'));
     }
 }

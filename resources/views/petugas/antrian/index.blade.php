@@ -27,8 +27,8 @@
                     @foreach ($user->antrian as $item)
                         @if ($item->verifikasi_pesan != 1)
                             <tr>
-                                <td>{{ $item->user->nama }}</td>
                                 <td>{{ $item->nama }}</td>
+                                <td>{{ $item->user->nama }}</td>
                                 <td>{{ $item->tgl_periksa }}</td>
                                 <td>{{\Carbon\Carbon::parse($item->tgl_periksa)->isoFormat('dddd')}}</td>
                                 <td>@if ($item->jam_periksa == '1')
