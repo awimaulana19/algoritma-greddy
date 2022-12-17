@@ -43,6 +43,9 @@ class DokterController extends Controller
         $dokter->user_id = Auth::user()->id;
 
         $dokter->save();
+        
+        $dokter->nama = $dokter->user->nama;
+        $dokter->update();
 
         Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
 
