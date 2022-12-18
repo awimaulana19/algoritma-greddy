@@ -43,7 +43,7 @@ class AntrianController extends Controller
 
             Alert::success('Berhasil', 'Antrian Berhasil Dibuat, Tunggu konfirmasi di Whatsapp');
         }else{
-            Alert::error('Gagal', 'Antrian Gagal Dibuat');
+            Alert::error('Gagal', 'Antrian Gagal Dibuat, Harap Periksa Kembali Inputan Anda');
         }
 
         return redirect('/');

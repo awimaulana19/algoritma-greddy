@@ -38,40 +38,64 @@ class DokterController extends Controller
 
     public function store(JadwalDokterPetugasRequest $request)
     {
+        $tanggal = $request->tanggal;
+        $jam = $request->jam;
+        $user = Auth::user()->id;
 
-        $dokter = new Dokter();
+        $jadwal = Dokter::where('user_id', $user)
+            ->where('tanggal', $tanggal)
+            ->where('jam', $jam)
+            ->get();
 
-        $dokter->tanggal = $request->tanggal;
-        $dokter->jam = $request->jam;
-        $dokter->user_id = Auth::user()->id;
+        if($jadwal->isEmpty()){
+            $dokter = new Dokter();
 
-        $dokter->save();
+            $dokter->tanggal = $request->tanggal;
+            $dokter->jam = $request->jam;
+            $dokter->user_id = Auth::user()->id;
 
-        $dokter->nama = $dokter->user->nama;
-        $dokter->update();
+            $dokter->save();
 
-        Alert::success('Berhasil', 'Jadwal Tidak Berhasil Dibuat');
+            $dokter->nama = $dokter->user->nama;
+            $dokter->update();
 
-        if ($dokter->save()) {
             Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
-            return redirect('jadwal-dokter');
+        }else{
+            Alert::error('Gagal', 'Tanggal, Jam Sudah Ada Di Dokter ini');
         }
+
+        return redirect('jadwal-dokter');
+
     }
 
     public function storeAdmin(JadwalDokterAdminRequest $request)
     {
-        $dokter = new Dokter();
+        $tanggal = $request->tanggal;
+        $jam = $request->jam;
+        $user = $request->user_id;
 
-        $dokter->tanggal = $request->tanggal;
-        $dokter->jam = $request->jam;
-        $dokter->user_id = $request->user_id;
+        $jadwal = Dokter::where('user_id', $user)
+            ->where('tanggal', $tanggal)
+            ->where('jam', $jam)
+            ->get();
 
-        $dokter->save();
+        if($jadwal->isEmpty()){
+            $dokter = new Dokter();
 
-        $dokter->nama = $dokter->user->nama;
-        $dokter->update();
+            $dokter->tanggal = $request->tanggal;
+            $dokter->jam = $request->jam;
+            $dokter->user_id = $request->user_id;
 
-        Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
+            $dokter->save();
+
+            $dokter->nama = $dokter->user->nama;
+            $dokter->update();
+
+            Alert::success('Berhasil', 'Jadwal Berhasil Dibuat');
+        }else{
+            Alert::error('Gagal', 'Tanggal, Jam Sudah Ada Di Dokter ini');
+        }
+
         return redirect('admin-jadwal-dokter');
     }
 
@@ -101,26 +125,52 @@ class DokterController extends Controller
 
     public function update(JadwalDokterPetugasRequest $request, $id)
     {
-        $dokter = Dokter::where('id', $id)->first();
+        $tanggal = $request->tanggal;
+        $jam = $request->jam;
+        $user = $request->user_id;
 
-        $dokter->tanggal = $request->tanggal;
-        $dokter->jam = $request->jam;
+        $jadwal = Dokter::where('user_id', $user)
+            ->where('tanggal', $tanggal)
+            ->where('jam', $jam)
+            ->get();
 
-        $dokter->update();
+        if($jadwal->isEmpty()){
+            $dokter = Dokter::where('id', $id)->first();
 
-        Alert::success('Berhasil', 'Jadwal Berhasil DiUpdate');
+            $dokter->tanggal = $request->tanggal;
+            $dokter->jam = $request->jam;
+
+            $dokter->update();
+            Alert::success('Berhasil', 'Jadwal Berhasil DiUpdate');
+        }else{
+            Alert::error('Gagal', 'Tanggal, Jam Sudah Ada Di Dokter ini');
+        }
+
         return redirect('jadwal-dokter');
     }
 
     public function updateAdmin(JadwalDokterPetugasRequest $request, $id)
     {
-        $dokter = Dokter::where('id', $id)->first();
+        $tanggal = $request->tanggal;
+        $jam = $request->jam;
+        $user = $request->user_id;
 
-        $dokter->tanggal = $request->tanggal;
-        $dokter->jam = $request->jam;
+        $jadwal = Dokter::where('user_id', $user)
+            ->where('tanggal', $tanggal)
+            ->where('jam', $jam)
+            ->get();
 
-        $dokter->update();
-        Alert::success('Berhasil', 'Jadwal Berhasil DiUpdate');
+        if($jadwal->isEmpty()){
+            $dokter = Dokter::where('id', $id)->first();
+
+            $dokter->tanggal = $request->tanggal;
+            $dokter->jam = $request->jam;
+
+            $dokter->update();
+            Alert::success('Berhasil', 'Jadwal Berhasil DiUpdate');
+        }else{
+            Alert::error('Gagal', 'Tanggal, Jam Sudah Ada Di Dokter ini');
+        }
 
         return redirect('admin-jadwal-dokter');
     }

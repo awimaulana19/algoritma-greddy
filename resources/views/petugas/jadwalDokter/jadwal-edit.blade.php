@@ -36,6 +36,7 @@
                         @enderror
                     </div>
                 </div>
+                <input type="hidden" name="user_id" id="user_id" value="{{ $dokter->user_id }}">
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save changes</button>

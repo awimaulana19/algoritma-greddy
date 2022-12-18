@@ -25,7 +25,7 @@
                         <select class="form-select @error('jam') is-invalid @enderror" name="jam">
                             <option selected value="0">Pilih Waktu</option>
                             <option value="1" {{($dokter->jam === '1') ? 'Selected' : ''}}>08:00 - 12:00</option>
-                            <option value="2" {{($dokter->jam === '2') ? 'Selected' : ''}}>13:30 - 17:00</option>
+                            <option value="2" {{($dokter->jam === '2') ? 'Selected' : ''}}>13:00 - 17:00</option>
                             <option value="3" {{($dokter->jam === '3') ? 'Selected' : ''}}>19:00 - 22:00</option>
                         </select>
                         @error('jam')
@@ -36,6 +36,7 @@
                         @enderror
                     </div>
                 </div>
+                <input type="hidden" name="user_id" id="user_id" value="{{ $dokter->user_id }}">
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save changes</button>
