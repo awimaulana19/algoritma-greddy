@@ -16,7 +16,6 @@ class WhatsappController extends Controller
     public function index($id)
     {
         $item = Tanggapan::where('antrian_id', $id)->first();
-        // $item = Antrian::find($id);
 
         $wa = $item->antrian->wa;
         $nama = $item->antrian->nama;
