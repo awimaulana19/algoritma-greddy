@@ -54,13 +54,13 @@ class TanggapanController extends Controller
                 $hari = \Carbon\Carbon::parse($p->antrian->tgl_periksa)->isoFormat('dddd');
                 $tanggal = $p->antrian->tgl_periksa;
 
-                if ($jam = "1") {
+                if ($jam == 1) {
                     $jam = "08:00 - 12:00";
                 }
-                else if ($jam = "2") {
+                if ($jam == 2) {
                     $jam = "13:00 - 17:00";
                 }
-                else if ($jam = "3") {
+                if ($jam == 3) {
                     $jam = "19:00 - 22:00";
                 }
 
