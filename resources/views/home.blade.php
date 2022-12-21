@@ -24,7 +24,7 @@
     {{-- navbar --}}
     <nav class="navbar navbar-expand-lg py-3 fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Klinik Greedy</a>
+            <a class="navbar-brand" href="#">Rafi Fisioterapi</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,7 +34,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#daftardokter">Dokter</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#kontak">Contact</a>
@@ -64,25 +64,25 @@
                                 <div class="row mb-3">
                                     <label class="col-3 col-form-label" for="nama">Nama</label>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" />
+                                        <input required type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" />
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-3 col-form-label" for="wa">Nomor WA</label>
                                     <div class="col-9">
-                                        <input type="text" id="wa" name="wa" class="form-control phone-mask" placeholder="Nomor" aria-label="Nomor" aria-describedby="basic-default-phone" />
+                                        <input required type="text" id="wa" name="wa" class="form-control phone-mask " placeholder="Nomor" aria-label="Nomor" aria-describedby="basic-default-phone" />
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-3 col-form-label" for="wa">Tanggal</label>
                                     <div class="col-9">
-                                        <input type="date" id="tgl_periksa" onchange="updateDokterList()" name="tgl_periksa" class="form-control phone-mask" aria-describedby="basic-default-phone" />
+                                        <input required type="date" id="tgl_periksa" onchange="updateDokterList()" name="tgl_periksa" class="form-control phone-mask" aria-describedby="basic-default-phone" />
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-3 col-form-label" for="jam_periksa">Jam</label>
                                     <div class="col-9">
-                                        <select class="form-select" id="jam_periksa" onchange="updateDokterList()" name="jam_periksa">
+                                        <select required class="form-select" id="jam_periksa" onchange="updateDokterList()" name="jam_periksa">
                                             <option value="">Pilih Jam</option>
                                             <option value="1">08:00 - 12:00</option>
                                             <option value="2">13:00 - 17:00</option>
@@ -94,7 +94,7 @@
                                 <div class="row mb-3">
                                     <label class="col-3 col-form-label" for="dokter">Dokter</label>
                                     <div class="col-9">
-                                        <select class="form-select" id="dokter" name="user_id" disabled>
+                                        <select required class="form-select" id="dokter" name="user_id" disabled>
                                             <option value="">Pilih Dokter</option>
                                         </select>
                                     </div>
@@ -105,7 +105,7 @@
                                         <label for="deskripsi" class="col-form-label">Deskripsi</label>
                                     </div>
                                     <div class="col-9">
-                                        <textarea class="form-control" name="deskripsi" id="deskripsi" cols="auto" rows="5" placeholder="masukkan deskripsi penyakit"></textarea>
+                                        <textarea required class="form-control" name="deskripsi" id="deskripsi" cols="auto" rows="5" placeholder="masukkan deskripsi penyakit"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -126,11 +126,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 align-self-center order-lg-0 order-2">
-                    <h1>Always Connected, <br>
-                        Always Secure.
+                    <h1 class="mb-3">Jaga Kesehatan, <br>
+                        dan Keluarga Anda
                     </h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo consequatur enim iusto non
-                        libero velit.</p>
+                    <p class="mb-5">Dengan Klinik Rafi Fisioterapi anda dapat mendaftarkan diri anda pada website sehingga memudahkan dalam menunggu antrian dan melakukan pemeriksaan </p>
                     <a class="btn-hub" target="_blank" href="https://api.whatsapp.com/send/?phone=6282226841562&text=Apakah+anda+bisa+membantu+Saya?&type=phone_number&app_absent=0">Hubungi
                         Klinik</a>
                 </div>
@@ -142,12 +141,12 @@
     </section>
 
 
-    {{-- about --}}
-    <section id="about">
+    {{-- dokter --}}
+    <section id="daftardokter">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="title">About</p>
+                    <p class="title">Dokter</p>
                     <p class="subtitle">Pilihan dokter spesialis</p>
                 </div>
             </div>
@@ -243,20 +242,20 @@
                                                         <div class="row mb-3">
                                                             <label class="col-3 col-form-label" for="nama">Nama</label>
                                                             <div class="col-9">
-                                                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" />
+                                                                <input required type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" />
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <label class="col-3 col-form-label" for="wa">Nomor WA</label>
                                                             <div class="col-9">
-                                                                <input type="text" id="wa" name="wa" class="form-control phone-mask" placeholder="Nomor" aria-label="Nomor" aria-describedby="basic-default-phone" />
+                                                                <input required type="text" id="wa" name="wa" class="form-control phone-mask" placeholder="Nomor" aria-label="Nomor" aria-describedby="basic-default-phone" />
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
                                                             <label class="col-3 col-form-label"
                                                                 for="wa">Tanggal</label>
                                                             <div class="col-9">
-                                                                <select class="form-select" id="tgl_periksa"
+                                                                <select required class="form-select" id="tgl_periksa"
                                                                     name="tgl_periksa">
                                                                     @php
                                                                         $unik = $item->dokter->unique(function ($item) {
@@ -275,7 +274,7 @@
                                                         <div class="row mb-3">
                                                             <label class="col-3 col-form-label" for="jam_periksa">Jam</label>
                                                             <div class="col-9">
-                                                                <select class="form-select" id="jam_periksa" name="jam_periksa">
+                                                                <select required class="form-select" id="jam_periksa" name="jam_periksa">
                                                                     @php
                                                                         $unikjam = $item->dokter->unique(function ($item) {
                                                                             return $item['jam'];
@@ -301,7 +300,7 @@
                                                                 <label for="deskripsi" class="col-form-label">Deskripsi</label>
                                                             </div>
                                                             <div class="col-9">
-                                                                <textarea class="form-control" name="deskripsi" id="deskripsi" cols="auto" rows="5" placeholder="masukkan deskripsi penyakit"></textarea>
+                                                                <textarea required class="form-control" name="deskripsi" id="deskripsi" cols="auto" rows="5" placeholder="masukkan deskripsi penyakit"></textarea>
                                                             </div>
                                                         </div>
                                                         <input id="dokter" type="hidden" name="user_id" value="{{ $item->id }}">
@@ -330,9 +329,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="lokasi mb-3">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63579.47262630796!2d119.41836823023026!3d-5.149172589020435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee2e6bbd6ca03%3A0x91e4ad5093ca55d4!2sHermina%20Makassar%20Hospital!5e0!3m2!1sen!2sid!4v1670468423393!5m2!1sen!2sid"
-                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d993.3249648129358!2d119.4676156291645!3d-5.215498364210867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee10f15b21579%3A0xbac88bac6fd53de6!2sRafi%20Klinik!5e0!3m2!1sen!2sid!4v1671610466630!5m2!1sen!2sid" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -341,8 +338,7 @@
                             Tentang Klinik
                         </p>
                         <p class="subtitle mt-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ea sunt quibusdam nihil?
-                            Maxime tempore quibusdam sapiente? Repellat, iste totam.
+                            Klinik Rafi Fisioterapi merupakan klinik Fisioterapi yang terletak di Tamarunang, Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92112
                         </p>
                     </div>
                 </div>
@@ -353,13 +349,10 @@
                         </p>
                         <p class="subtitle mt-3">
                         <div class="mb-3">
-                            <i class="bi bi-facebook"> klink.ind</i>
+                            <i class="bi bi-facebook"> klinikrafi</i>
                         </div>
                         <div class="mb-3">
-                            <i class="bi bi-instagram"> Klinik_Indonesia</i>
-                        </div>
-                        <div class="mb-3">
-                            <i class="bi bi-twitter"> Klinik.klik</i>
+                            <i class="bi bi-instagram"> rafi_klinik</i>
                         </div>
                         </p>
                     </div>
@@ -373,7 +366,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 py-2 text-center">
-                    <i>Copyright @ Klinik 2022</i>
+                    <i>Copyright @Rafi Fisioterapy 2022</i>
                 </div>
             </div>
         </div>
