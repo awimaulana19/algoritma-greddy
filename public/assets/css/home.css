@@ -222,3 +222,12 @@
         padding: 20px 10px;
     }
 }
+.btn-ungu{
+    background-color:#BD86BE;
+    color:#fff;
+}
+.btn-ungu:hover{
+    background-color:#a96ba9;
+    color:#fff;
+    transition: all ease-in-out 0.4s;
+}

@@ -125,7 +125,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Daftar</button>
+                        <button type="submit" class="btn btn-ungu">Daftar</button>
                     </div>
                 </form>
             </div>
@@ -348,13 +348,13 @@
                                                             <input id="dokter" type="hidden" name="user_id"
                                                                 value="{{ $item->id }}">
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">Daftar</button>
                                                     </form>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-ungu">Daftar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -367,7 +367,7 @@
         </div>
     </section>
 
-    
+
 
     {{-- contact --}}
     <section id="kontak">
@@ -376,7 +376,8 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="title">Klinik Rafi Fisioterapi</div>
-                        <p>Klinik Rafi Fisioterapi merupakan klinik Fisioterapi yang terletak di Tamarunang, Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92112</p>
+                        <p>Klinik Rafi Fisioterapi merupakan klinik Fisioterapi yang terletak di Tamarunang, Somba Opu,
+                            Kabupaten Gowa, Sulawesi Selatan 92112</p>
                         <a href="#" class="d-flex mb-2">
                             <i class="me-2 bi bi-house"></i>
                             <p class="mb-0 align-self-center">Beranda</p>
@@ -435,7 +436,7 @@
     </footer>
 
 
-    
+
 
 
     <script>
