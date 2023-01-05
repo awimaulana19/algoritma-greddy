@@ -60,7 +60,7 @@
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Daftar Antrian</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="height: 490px; overflow: auto;">
                         <div class="card mb-4">
                             <div class="card-header d-flex align-items-center justify-content-between">
                                 <h5 class="mb-0">Data Diri</h5>
