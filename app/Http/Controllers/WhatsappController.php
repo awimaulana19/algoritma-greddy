@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Antrian;
 use App\Models\Tanggapan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
-
-
-
 
 class WhatsappController extends Controller
 {

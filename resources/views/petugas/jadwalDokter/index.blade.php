@@ -48,5 +48,8 @@
                 </tbody>
             </table>
         </div>
+        <div class="d-flex justify-content-end align-items-center me-3 mb-3">
+            <a href="{{Auth::user()->roles != 'admin' ? url('jadwal-dokter-pdf'):url('admin-jadwal-dokter-pdf')}}" target="_blank" class="btn btn-success"><i class="bi bi-file-pdf"></i> PDF</a>
+        </div>
     </div>
 @endsection

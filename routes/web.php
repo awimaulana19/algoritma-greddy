@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\DataPdfController;
 use App\Models\Dokter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DokterController;
@@ -65,8 +65,13 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('admin-validasi-pasien/{id}',[DokterController::class,'validasiAntrianPasienAdmin']);
     Route::get('/whatsapp-admin/{id}', [WhatsappController::class, 'index']);
     Route::get('delete-antrian-admin/{id}',[DokterController::class,'delete_antrianAdmin']);
-    Route::get('admin-history-antrian',[WhatsappController::class,'history_antrian']);
     Route::post('buat-tanggapan-admin',[TanggapanController::class,'index']);
+
+    Route::get('admin-history-antrian',[WhatsappController::class,'history_antrian']);
+
+    Route::get('admin-history-antrian-pdf',[DataPdfController::class,'pdf_history_antrian']);
+    Route::get('admin-jadwal-dokter-pdf',[DataPdfController::class,'pdf_jadwal_dokter']);
+    Route::get('admin-dokter-pdf',[DataPdfController::class,'pdf_dokter']);
 
 });
 
@@ -87,4 +92,8 @@ Route::group(['middleware' => ['auth', 'OnlyPetugas']], function () {
     Route::get('delete-antrian/{id}',[DokterController::class,'delete_antrian']);
     Route::get('history-antrian',[WhatsappController::class,'history_antrian']);
     Route::post('buat-tanggapan',[TanggapanController::class,'index']);
+
+    Route::get('history-antrian-pdf',[DataPdfController::class,'petugas_pdf_history_antrian']);
+    Route::get('jadwal-dokter-pdf',[DataPdfController::class,'petugas_pdf_jadwal_dokter']);
+
 });

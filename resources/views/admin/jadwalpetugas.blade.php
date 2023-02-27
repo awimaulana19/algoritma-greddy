@@ -58,6 +58,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="d-flex justify-content-end align-items-center me-3 my-3">
+                    <a href="{{url('admin-jadwal-dokter-pdf')}}" target="_blank" class="btn btn-success"><i class="bi bi-file-pdf"></i> PDF</a>
+                </div>
             </div>
 
         </div>

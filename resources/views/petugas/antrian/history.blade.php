@@ -15,7 +15,6 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nomor Antrian</th>
                     <th>Nama Pasien</th>
                     <th>Nama Dokter</th>
                     <th>Tanggal</th>
@@ -29,7 +28,6 @@
                 @if ($item->antrian->verifikasi_pesan == 1)
                 <tr>
                     <td>{{$no+=1}}</td>
-                    <td>{{$item->antrian->nomor_antrian}}</td>
                     <td>{{$item->antrian->nama}}</td>
                     <td>{{$item->user->nama}}</td>
                     <td>{{$item->tgl_periksa}}</td>
@@ -38,11 +36,14 @@
                     <td class="text-success">
                         Telah Di Verifikasi
                     </td>
-                </tr>
+                 </tr>
                 @endif
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="d-flex justify-content-end align-items-center me-3 mb-3">
+        <a href="{{Auth::user()->roles != 'admin' ? url('history-antrian-pdf'):url('admin-history-antrian-pdf')}}" target="_blank" class="btn btn-success"><i class="bi bi-file-pdf"></i> PDF</a>
     </div>
 </div>
 {{-- end antrain sebelum verifikasi --}}

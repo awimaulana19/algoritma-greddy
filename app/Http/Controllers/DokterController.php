@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokter;
 use App\Models\Antrian;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
