@@ -15,7 +15,7 @@ class AntrianController extends Controller
 
         $user = User::where('roles','=','petugas')->get();
         $jadwal = Dokter::get();
-        
+
         return view('home',compact('user'),compact('jadwal'));
     }
 
@@ -29,7 +29,7 @@ class AntrianController extends Controller
             ->where('tanggal', $tanggal)
             ->where('jam', $jam)
             ->get();
-        
+
         if($jadwal->isNotEmpty()){
             $antrian = new Antrian();
 

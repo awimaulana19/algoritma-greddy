@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('antrians', function (Blueprint $table) {
             $table->id();
+            $table->string('nomor_antrian')->nullable();
             $table->string('nama');
             $table->string('wa');
             $table->string('tgl_periksa');

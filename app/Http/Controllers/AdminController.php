@@ -7,10 +7,10 @@ use App\Models\Dokter;
 use App\Models\Antrian;
 use App\Http\Requests\AdminRequest;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\AdminUpdateRequest;
 use App\Models\Tanggapan;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -40,7 +40,7 @@ class AdminController extends Controller
         $input = $user;
 
         if ($request->file('gambar')) {
-            $input->gambar = $request->file('gambar')->store('images');
+            $input->gambar = $request->file('gambar')->store('');
         }
 
         $input->save();
@@ -71,9 +71,12 @@ class AdminController extends Controller
 
         if ($request->file('gambar')) {
             if ($request->gambarLama) {
-                Storage::delete($request->gambarLama);
+                File::delete('images/'. $request->gambarLama);
             }
-            $input->gambar = $request->file('gambar')->store('images');
+        }
+
+        if ($request->file('gambar')) {
+            $input->gambar = $request->file('gambar')->store('');
         }
 
         $input->update();
@@ -92,7 +95,7 @@ class AdminController extends Controller
 
 
         if ($user->gambar) {
-            Storage::delete($user->gambar);
+            File::delete('images/'. $user->gambar);
         }
         Dokter::destroy($dokter);
         Antrian::destroy($antrian);

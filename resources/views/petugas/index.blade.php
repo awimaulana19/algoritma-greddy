@@ -31,7 +31,7 @@
             @if($item->roles == 'petugas')
             <tr>
                 <td>
-                  <img src="{{ asset('storage/'.$item->gambar) }}" alt="" width="auto" height="100px">
+                  <img src="{{ asset('images/'.$item->gambar) }}" alt="" width="auto" height="100px">
                 </td>
                 <td>{{$item->nama}}</td>
                 <td>{{$item->spesialis}}</td>

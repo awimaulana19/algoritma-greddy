@@ -29,6 +29,7 @@ class TanggapanController extends Controller
 
         $antrian = Antrian::where('id',$buat->antrian_id)->first();
         $antrian->verifikasi_pasien = $request->verifikasi_pasien;
+        $antrian->nomor_antrian = $request->nomor_antrian;
         $antrian->update();
 
         $user = $request->user_id;

@@ -1,6 +1,6 @@
 @extends('template.index')
 
-@section('title', 'Antrian Pasien | Admin')
+@section('title', 'Antrian Pasien')
 
 @section('content')
 @include('sweetalert::alert')
@@ -12,6 +12,7 @@
                 <table class="table table-hover mt-4">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Nama Pasien</th>
                             <th>Dokter Pasien</th>
                             <th>Tanggal</th>
@@ -21,9 +22,10 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($antrian as $item)
+                        @foreach ($antrian as $no => $item)
                         @if ($item->verifikasi_pesan != 1)
                         <tr>
+                            <td>{{$no=+1}}</td>
                             <td>{{$item->nama}}</td>
                             <td>{{$item->user->nama}}</td>
                             <td>{{$item->tgl_periksa}}</td>

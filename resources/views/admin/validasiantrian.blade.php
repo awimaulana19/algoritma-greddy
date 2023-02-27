@@ -1,6 +1,6 @@
 @extends('template.index')
 
-@section('title', 'Validasi Antrian | Admin')
+@section('title', 'Validasi Antrian')
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-md-12 mb-4">
@@ -16,10 +16,21 @@
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Penyakit</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" readonly style="background-color:#fff;overflow:auto;resize:none">{{ $antrian->deskripsi }}</textarea>
                         </div>
-                        <div>
+                        <div class="mb-3">
                             <label for="nama" class="form-label">Lama Kerja(Jam)</label>
                             <input class="form-control  @error('lama') is-invalid @enderror" type="number" name="lama" placeholder="masukan waktu lama kerja">
                             @error('lama')
+                            <div class="invalid-feedback">
+                                    <i class="bi bi-exclamation-circle-fill"></i>
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="nama" class="form-label">Nomor Antrian</label>
+                            <input class="form-control  @error('nomor_antrian') is-invalid @enderror" type="number" name="nomor_antrian" placeholder="masukan nomor antrian">
+                            @error('nomor_antrian')
                             <div class="invalid-feedback">
                                     <i class="bi bi-exclamation-circle-fill"></i>
                                     {{ $message }}

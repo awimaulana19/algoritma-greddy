@@ -19,13 +19,14 @@ class WhatsappController extends Controller
 
         $wa = $item->antrian->wa;
         $nama = $item->antrian->nama;
+        $nomor_antrian = $item->antrian->nomor_antrian;
         $mulai = $item->jam_mulai;
         $akhir = $item->perkiraan;
         $hari = \Carbon\Carbon::parse($item->antrian->tgl_periksa)->isoFormat('dddd');
         $tanggal = $item->antrian->tgl_periksa;
 
         $isi_pesan = "Halo " . $nama .
-            " Terima Kasih Telah Mendaftar Antrian. Beradasarkan dengan antrian prioritas kami maka antrian anda berada di jam ".$mulai.".00 sampai ".$akhir.".00 pada hari ".$hari." tanggal ".$tanggal." ";
+            " Terima Kasih Telah Mendaftar Antrian. Beradasarkan dengan antrian prioritas kami maka anda antrian ke ". $nomor_antrian ." jam ".$mulai.".00 sampai ".$akhir.".00 pada hari ".$hari." tanggal ".$tanggal." ";
 
         $api_key   = '469d065c8788ab986e8486312fe68b8f9d21155b'; // API KEY Anda
         $id_device = '2077'; // ID DEVICE yang di SCAN (Sebagai pengirim)

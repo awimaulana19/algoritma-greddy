@@ -15,6 +15,7 @@
             <table class="table table-hover mt-4">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Nama Pasien</th>
                         <th>Nama Dokter</th>
                         <th>Tanggal</th>
@@ -24,9 +25,10 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($user->antrian as $item)
+                    @foreach ($user->antrian as $no => $item)
                         @if ($item->verifikasi_pesan != 1)
                             <tr>
+                                <td>{{$no=+1}}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->user->nama }}</td>
                                 <td>{{ $item->tgl_periksa }}</td>

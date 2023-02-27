@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\Dokter;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\TanggapanController;
-use App\Models\Dokter;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ use Illuminate\Http\Request;
 |
 */
 
+// Route::get('/foo', function () {
+//     Artisan::call('storage:link');
+// });
+
 Route::get('/', [AntrianController::class, 'index']);
 Route::post('/', [AntrianController::class, 'store']);
 
@@ -30,14 +35,14 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::get('/jadwal', function (Request $request) {
     $tanggal = $request->input('tanggal');
     $jam = $request->input('jam');
-  
+
     $jadwals = Dokter::where('tanggal', '=', $tanggal)
       ->where('jam', '=', $jam)
       ->get();
-  
+
     return response()->json($jadwals);
   });
-  
+
 
 
 Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {

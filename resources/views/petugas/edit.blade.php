@@ -54,7 +54,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Gambar Lama</label> <br>
-                            <img src="{{ asset('storage/'.$user->gambar) }}" alt="" width="auto" height="122px">
+                            <img src="{{ asset('images/'.$user->gambar) }}" alt="" width="auto" height="122px">
                         </div>
                         <input type="hidden" name="gambarLama" value="{{ $user->gambar }}">
                         <div class="mb-3">
@@ -70,7 +70,7 @@
                         <div class="d-flex justify-content-end">
                             <a href="/petugas" class="btn btn-danger me-3">Batal</a>
                             <button type="submit" class="btn btn-primary">
-                                Submit
+                                Update
                             </button>
                         </div>
                     </div>

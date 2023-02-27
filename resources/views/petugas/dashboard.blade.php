@@ -13,7 +13,7 @@
                 <form action="">
                     <div class="row px-4 mb-4">
                         <div class="col-lg-4 col-md-12 mb-3">
-                            <img src="{{Auth::user()->gambar != null ? asset('storage/'.Auth::user()->gambar) : asset('assets/img/avatars/1.png') }}" alt class="h-auto rounded" width="100%" />
+                            <img src="{{Auth::user()->gambar != null ? asset('images/'.Auth::user()->gambar) : asset('assets/img/avatars/1.png') }}" alt class="h-auto rounded" width="100%" />
                         </div>
 
                         <div class="col-lg-4 col-md-12 align-self-center">
