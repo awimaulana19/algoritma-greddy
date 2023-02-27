@@ -28,7 +28,7 @@
                 @foreach ($tanggapan as $no => $item)
                 @if ($item->antrian->verifikasi_pesan == 1)
                 <tr>
-                    <td>{{$no=+1}}</td>
+                    <td>{{$no+=1}}</td>
                     <td>{{$item->antrian->nomor_antrian}}</td>
                     <td>{{$item->antrian->nama}}</td>
                     <td>{{$item->user->nama}}</td>
