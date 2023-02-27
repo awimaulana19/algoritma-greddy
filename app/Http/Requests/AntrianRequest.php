@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +28,7 @@ class AntrianRequest extends FormRequest
         return [
             'nama' => 'required|max:255',
             'wa' => 'required|numeric',
-            'tgl_periksa' => 'required',
+            'tgl_periksa' => ['required', 'date', 'after:'.Carbon::yesterday()->toDateString()],
             'jam_periksa' => 'required',
             'user_id' => 'required',
             'deskripsi' => 'required'

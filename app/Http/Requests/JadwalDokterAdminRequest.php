@@ -26,8 +26,7 @@ class JadwalDokterAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'tanggal' => ['required', 'date', 'after:'.Carbon::today()->toDateString()],
-            // 'tanggal' => 'required|before_or_equal:today',
+            'tanggal' => ['required', 'date', 'after:'.Carbon::yesterday()->toDateString()],
             'jam' => 'required|not_in:0',
             'user_id' => 'required'
         ];
